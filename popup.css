@@ -5,10 +5,13 @@
 body {
 	margin: 0;padding: 0;
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-	background: #005581;
+	background-color: #99b9d2;
 	width:310px;
 	padding-bottom:10px;
 	color:#fff200;
+}
+html {
+	border-radius: 3px;
 }
 
 header {
@@ -22,20 +25,22 @@ h1 {
 }
 h1#app-logo {
 	display: block;
-	line-height:45px;
-	background:transparent url(images/ui/logo.png) 0 center no-repeat;
+	line-height:42px;
+	background:#005581 url(images/ui/logo.png) 10px center no-repeat;
 	color: transparent;
+	border-radius: 3px;
 }
-h1#app-logo:before,h1#app-logo:after {
+/*h1#app-logo:before,h1#app-logo:after {
 	display: block;
 	content:'';
 	height: 3px;
 	background: transparent url(images/ui/border.png) left top repeat-x;
-}
+}*/
 h2 {
 	font-size:14px;
-	margin:0;
+	margin:0 10px;
 	padding:10px 0 6px 0;
+	color: #005581;
 }
 p {
 	font-size: 14px;
@@ -46,8 +51,8 @@ a {
 }
 a.info {
 	position:absolute;
-	right:10px;
-	top:25px;
+	right:20px;
+	top:20px;
 	display:block;
 	padding:0 6px;
 	border:2px solid #fff200;
@@ -81,55 +86,57 @@ a.info:hover + p.info-panel {
 .accordion-header {
 		padding:0;
 		margin:0;
-		background: #99b9d2;
+		/*background: #99b9d2;*/
+		background: #fff;
+		border-radius: 3px;
+		border: 1px solid #005581;
+		-webkit-transition: background .2s ease-in-out, border-radius .2s ease-in-out, border-bottom-color .2s ease-in-out;
+		background-position: right 50%;
+		background-repeat: no-repeat;
+		margin: 5px 0 0 0;
 }
 .accordion-header a {
 		display:block;
-		font-size: 16px;
+		font-size: 14px;
 		background:transparent;
-		margin: 5px 0 0 0;
-		padding: 5px 20px;
-		border: 1px solid #fff;
+		padding: 5px 10px;
 		cursor: pointer;
-		color: #222;
+		color: #333;
 }
 
 .active-header {
-		background: url(images/ui/active-header.gif) #fff;
-		background-repeat: no-repeat;
-		background-position: right 50%;
+		background-image: url(images/ui/active-header.gif);
+		border-radius: 3px 3px 0 0;
+		border-bottom-color: transparent;
 }
 
 .active-header:hover {
-		background: url(images/ui/active-header.gif) #eee;
-		background-repeat: no-repeat;
-		background-position: right 50%;
+		background-image: url(images/ui/active-header.gif);
+		background-color: #eee;
 }
 
 .inactive-header {
-		background: url(images/ui/inactive-header.gif) #99b9d2;
-		background-repeat: no-repeat;
-		background-position: right 50%;
+		background-image: url(images/ui/inactive-header.gif);
 }
 
 .inactive-header:hover {
-		background: url(images/ui/inactive-header.gif) #f5f5f5;
-		background-repeat: no-repeat;
-		background-position: right 50%;
+		background-image: url(images/ui/inactive-header.gif);
+		background-color: #eee;
 }
 
 .accordion-content {
 		display: none;
 		width:100%;
 		background: #ffffff;
-		border: 1px solid #cccccc;
+		border: 1px solid #005581;
 		border-top:none;
 		color:#222;
+		border-radius: 0 0 3px 3px;
 }
 
-.accordion-content p.intro { margin:0; padding:10px 10px 5px 10px; }
-.accordion-content h2 { margin:0; padding:5px 10px; font-size:14px; }
-.accordion-content h3 { margin:0; padding:0 10px 2px 10px; font-size:13px; font-weight:normal; }
+.accordion-content p.intro { font-size: 12px; margin:0; padding:10px 10px 5px 10px; }
+.accordion-content h2 { color: #444; margin:0; padding:5px 10px; font-size:13px; }
+.accordion-content h3 { color: #666; margin:0; padding:0 10px 2px 10px; font-size:12px; font-weight:normal; }
 .accordion-content p.slider { margin:5px 0; padding: 0 10px; }
 .accordion-content input[type=range] { width:100%; }
 .stadia { margin:0; padding:5px 10px; list-style: none; width:100%; -webkit-box-sizing: border-box; overflow:hidden; }
