@@ -59,6 +59,7 @@ $('#diabetic-ret a').bind('click focus', function(e){
 		chrome.tabs.executeScript(tab.id, {code:"diabeticRet('"+img+"')"});
 		//chrome.tabs.update(tab.id, {selected: true});
 	});
+	chrome.extension.sendMessage({action:'setCover',value:img});
 	//giveElementFocus($(this));
 	return false;
 });
@@ -70,6 +71,7 @@ $('#ret-pigmentosa a').bind('click focus', function(){
 		//chrome.tabs.update(tab.id, {selected: true});
 	});
 	//giveElementFocus($(this));
+	chrome.extension.sendMessage({action:'setCover',value:img});
 	return false;
 });
 $('#glaucoom a').bind('click focus', function(){
@@ -80,6 +82,7 @@ $('#glaucoom a').bind('click focus', function(){
 		//chrome.tabs.update(tab.id, {selected: true});
 	});
 	//giveElementFocus($(this));
+	chrome.extension.sendMessage({action:'setCover',value:img});
 	return false;
 });
 $('#macula-deg a').bind('click focus', function(){
@@ -90,6 +93,7 @@ $('#macula-deg a').bind('click focus', function(){
 		//chrome.tabs.update(tab.id, {selected: true});
 	});
 	//giveElementFocus($(this));
+	chrome.extension.sendMessage({action:'setCover',value:img});
 	return false;
 });
 
