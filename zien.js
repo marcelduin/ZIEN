@@ -19,6 +19,13 @@ if(chrome.extension) {
 	imgControl = new ImageControl();
 	setTimeout(function(){
 		chrome.extension.sendMessage({action:'getCurrentSettings'},function(d){
+			if(d.cover) {
+				if(/macula/.test(d.cover)) maculaDeg(d.cover);
+				else if(/Retinitis/.test(d.cover)) retPigmentosa(d.cover);
+				else if(/glaucoom/.test(d.cover)) glaucoom(d.cover);
+				else if(/diabetische/.test(d.cover)) diabeticRet(d.cover);
+			}
+			delete d.cover;
 			for(var x in d) imgControl.filters[x]=d[x];
 		})
 	});

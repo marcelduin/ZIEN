@@ -1,27 +1,6 @@
-/*chrome.extension.onMessage.addListener(
-  function(request, sender, sendResponse) {
-    console.log('red = ' + request.redColor);
-    imgControl.filters.red = parseFloat(request.redColor);
-    console.log('blue = ' + request.blueColor);
-    imgControl.filters.blue = request.blueColor;
-    console.log('green = ' + request.greenColor);
-    imgControl.filters.green = request.greenColor;
-  });*/
-
 var vp = document.createElement('div');
 vp.id = 'sight-cover';
-//vp.style.display = 'none';
-vp.style.position = 'fixed';
-vp.style.zIndex = 999;
-vp.style.top = 0;
-vp.style.left = 0;
-vp.style.width = '100%';
-vp.style.height = '100%';
-//vp.style.border = '1px solid red';
 document.body.appendChild(vp);
-
-//var mcoo = [0,0];
-//window.onmousemove = function(e){mcoo = [(e.clientX/ws[0])*2-1,-(e.clientY/ws[1])*2+1]};
 
 var See = {};
 
@@ -59,37 +38,31 @@ function CursorCrosshair(val){
 }
 
 function setCover(u){
+	if(!u) return killSightCover();
+	u = chrome.extension.getURL(u);
 	vp.style.backgroundImage = 'url('+u+')';
 	vp.style.display = 'block';
-	vp.style.zIndex = 2147483647;
-
 }
 
 function diabeticRet(imgURL){
-	var u = chrome.extension.getURL(imgURL);
 	vp.className = 'diabetic-ret';
-	setCover(u);
+	setCover(imgURL);
 }
 
 function retPigmentosa(imgURL){
-	var u = chrome.extension.getURL(imgURL);
 	vp.className = 'ret-pigmentosa';
-	setCover(u);
+	setCover(imgURL);
 }
 
 function glaucoom(imgURL){
-	var u = chrome.extension.getURL(imgURL);
 	vp.className = 'glaucoom';
-	setCover(u);
+	setCover(imgURL);
 }
 
 
 function maculaDeg(imgURL){
-	var u = chrome.extension.getURL(imgURL);
 	vp.className = 'macula-deg';
-	setCover(u);
-	//vp_width = document.getElementById("viewport-img").offsetWidth;
-	//vp_height = document.getElementById("viewport-img").offsetHeight;
+	setCover(imgURL);
 }
 
 function killSightCover(){
