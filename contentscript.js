@@ -10,14 +10,12 @@
 
 var vp = document.createElement('div');
 vp.id = 'sight-cover';
-//vp.style.display = 'none';
 vp.style.position = 'fixed';
 vp.style.zIndex = 999;
 vp.style.top = 0;
 vp.style.left = 0;
 vp.style.width = '100%';
 vp.style.height = '100%';
-//vp.style.border = '1px solid red';
 document.body.appendChild(vp);
 
 //var mcoo = [0,0];
@@ -62,6 +60,9 @@ function setCover(u){
 	vp.style.backgroundImage = 'url('+u+')';
 	vp.style.display = 'block';
 	vp.style.zIndex = 2147483647;
+	vp.style.width = '100%';
+	vp.style.height = '100%';
+	vp.style.margin = '0px';
 
 }
 
@@ -69,6 +70,9 @@ function diabeticRet(imgURL){
 	var u = chrome.extension.getURL(imgURL);
 	vp.className = 'diabetic-ret';
 	setCover(u);
+	vp.style.width = 1.5*ws[0]+'px';
+	vp.style.height = 1.5*ws[1]+'px';
+	vp.style.margin = (-0.25*ws[1])+'px 0 0 '+(-0.25*ws[0])+'px';
 }
 
 function retPigmentosa(imgURL){
