@@ -17,8 +17,10 @@ var html = document.getElementsByTagName('html')[0];
 
 if(chrome.extension) {
 	imgControl = new ImageControl();
-	chrome.extension.sendMessage({action:'getCurrentSettings'},function(d){
-		for(var x in d) imgControl.filters[x]=d[x];
+	setTimeout(function(){
+		chrome.extension.sendMessage({action:'getCurrentSettings'},function(d){
+			for(var x in d) imgControl.filters[x]=d[x];
+		})
 	});
 }
 else addEventListener('DOMContentLoaded',function(){imgControl = new ImageControl()});
@@ -34,7 +36,7 @@ xhr.onreadystatechange = function(e){
   }
 };
 xhr.open('GET',fu,true);
-xhr.send(null)
+xhr.send(null);
 
 function ImageControl() {
 	var sliders = ['protanomaly','deuteranomaly','tritanomaly','cataract','achromatopsy'];
@@ -65,7 +67,7 @@ function ImageControl() {
 		sls.push(_sl)
 	}
 
-	this.blurNodes = new BlurNodes(100);
+	//this.blurNodes = new BlurNodes(100);
 
 	var _btoggle = newEl('input',null,null,_cnt);
 	_btoggle.title = 'blurry nodes';
@@ -99,14 +101,21 @@ function changeColors(prot,deut,trit,cataract,sat) {
 	if(cataract!=0) f.push('blur('+cataract*10+'px) sepia('+cataract*100+'%)');
 	if(sat!=1) f.push('saturate('+sat*100+'%)');
 	
-	var videos = document.getElementsByTagName('video');
-	for(var i=0;i<videos.length;i++) videos[i].style.webkitFilter = f.length?f.join(' '):null;
+	//var videos = document.getElementsByTagName('video');
+	//for(var i=0;i<videos.length;i++) videos[i].style.webkitFilter = f.length?f.join(' '):null;
 
-	if(prot>0) f.push('url(#Prot'+prot*100+')');
-	if(deut>0) f.push('url(#Deut'+deut*100+')');
-	if(trit>0) f.push('url(#Trit'+trit*100+')');
+	if(prot>0) f.push('url(#prot'+prot*100+')');
+	if(deut>0) f.push('url(#deut'+deut*100+')');
+	if(trit>0) f.push('url(#trit'+trit*100+')');
 	
-	html.style.webkitFilter = f.length?f.join(' '):null;
+	var flt = f.length;
+	html.style.webkitFilter = flt?f.join(' '):null;
+	var allEls = document.getElementsByTagName('div');
+	for(var i=0;i<allEls.length;i++) {
+		var trans = getComputedStyle(allEls[i],null).getPropertyValue('-webkit-transform');
+		if(trans && (flt && trans != 'none'))
+			allEls[i].style.webkitTransform = flt?'none':null;
+	}
 };
 
 function BlurNodes(num) {
