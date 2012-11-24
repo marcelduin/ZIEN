@@ -17,8 +17,10 @@ var html = document.getElementsByTagName('html')[0];
 
 if(chrome.extension) {
 	imgControl = new ImageControl();
-	chrome.extension.sendMessage({action:'getCurrentSettings'},function(d){
-		for(var x in d) imgControl.filters[x]=d[x];
+	setTimeout(function(){
+		chrome.extension.sendMessage({action:'getCurrentSettings'},function(d){
+			for(var x in d) imgControl.filters[x]=d[x];
+		})
 	});
 }
 else addEventListener('DOMContentLoaded',function(){imgControl = new ImageControl()});
