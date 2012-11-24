@@ -2,20 +2,22 @@
 * {
 	box-sizing:border-box;
 }
+html {
+	border-radius: 3px;
+	-webkit-user-select: none;
+	cursor: default;
+}
 body {
 	margin: 0;padding: 0;
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	background-color: #99b9d2;
 	width:310px;
-	padding-bottom:10px;
 	color:#fff200;
-}
-html {
-	border-radius: 3px;
 }
 
 header {
 	padding:10px 12px 0 12px;
+	padding: 0;
 }
 
 h1 {
@@ -28,7 +30,7 @@ h1#app-logo {
 	line-height:42px;
 	background:#005581 url(images/ui/logo.png) 10px center no-repeat;
 	color: transparent;
-	border-radius: 3px;
+	border-radius: 3px 3px 0 0;
 }
 /*h1#app-logo:before,h1#app-logo:after {
 	display: block;
@@ -52,7 +54,7 @@ a {
 a.info {
 	position:absolute;
 	right:20px;
-	top:20px;
+	top:10px;
 	display:block;
 	padding:0 6px;
 	border:2px solid #fff200;
@@ -75,63 +77,61 @@ a.info:hover + p.info-panel {
 /* accordion */
 
 .accordion-container {
-		font-size: 13px;
-		/*background: #ffffff;*/
-		width:310px;
-		padding: 0px 10px;
+	font-size: 13px;
+	width:310px;
+	padding: 0px 10px;
 }
 .pull-down { 
-		margin-bottom:-30px;
+	margin-bottom:-30px;
 }
 .accordion-header {
-		padding:0;
-		margin:0;
-		/*background: #99b9d2;*/
-		background: #fff;
-		border-radius: 3px;
-		border: 1px solid #005581;
-		-webkit-transition: background .2s ease-in-out, border-radius .2s ease-in-out, border-bottom-color .2s ease-in-out;
-		background-position: right 50%;
-		background-repeat: no-repeat;
-		margin: 5px 0 0 0;
+	padding:0;
+	margin:0;
+	background: #f8fcff;
+	border-radius: 3px;
+	border: 1px solid #005581;
+	-webkit-transition: background .2s ease-in-out, border-radius .2s ease-in-out, border-bottom-color .2s ease-in-out;
+	background-position: right 50%;
+	background-repeat: no-repeat;
+	margin: 5px 0 0 0;
 }
 .accordion-header a {
-		display:block;
-		font-size: 14px;
-		background:transparent;
-		padding: 5px 10px;
-		cursor: pointer;
-		color: #333;
+	display:block;
+	font-size: 14px;
+	background:transparent;
+	padding: 5px 10px;
+	cursor: pointer;
+	color: #333;
 }
 
 .active-header {
-		background-image: url(images/ui/active-header.gif);
-		border-radius: 3px 3px 0 0;
-		border-bottom-color: transparent;
+	background-image: url(images/ui/active-header.gif);
+	border-radius: 3px 3px 0 0;
+	border-bottom-color: transparent;
 }
 
 .active-header:hover {
-		background-image: url(images/ui/active-header.gif);
-		background-color: #eee;
+	background-image: url(images/ui/active-header.gif);
+	background-color: #fff;
 }
 
 .inactive-header {
-		background-image: url(images/ui/inactive-header.gif);
+	background-image: url(images/ui/inactive-header.gif);
 }
 
 .inactive-header:hover {
-		background-image: url(images/ui/inactive-header.gif);
-		background-color: #eee;
+	background-image: url(images/ui/inactive-header.gif);
+	background-color: #fff;
 }
 
 .accordion-content {
-		display: none;
-		width:100%;
-		background: #ffffff;
-		border: 1px solid #005581;
-		border-top:none;
-		color:#222;
-		border-radius: 0 0 3px 3px;
+	display: none;
+	width:100%;
+	background: #ffffff;
+	border: 1px solid #005581;
+	border-top:none;
+	color:#222;
+	border-radius: 0 0 3px 3px;
 }
 
 .accordion-content p.intro { font-size: 12px; margin:0; padding:10px 10px 5px 10px; }
@@ -147,5 +147,30 @@ a.info:hover + p.info-panel {
 .stadia#slechtziend li { width:16.66666666666667%; }
 
 
-
-
+/* footer */
+footer {
+	margin-top: 15px;
+	background-color: #005581;
+	border-radius: 0 0 3px 3px;
+	text-align: right;
+	vertical-align: top;
+	line-height: 30px;
+	font-size: 10px;
+	color: #fff;
+	font-style: italic;
+}
+footer a {
+	color: transparent;
+	display: inline-block;
+	height: 30px;
+	background-size: auto 10px;
+	margin: 0 5px;
+}
+footer a#bartimeus {
+	width: 91px;
+	background: transparent url(images/ui/bartimeus.png) center center no-repeat;
+}
+footer a#q42 {
+	width: 20px;
+	background: transparent url(images/ui/q42.png) center center no-repeat;
+}
