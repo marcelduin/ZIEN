@@ -44,17 +44,6 @@ chrome.extension.sendMessage({action:'getCurrentSettings'},function(d){
 	for(var x in d) document.getElementById('slider-'+x).value=d[x];
 });
 
-
-var n = 0;
-$('#ext-body').bind('mousemove', function(){
-	$('#test-msg').html('moving inside extension: ' + n);
-	n++;
-
-	chrome.tabs.getSelected(null, function(tab) {
-		//chrome.tabs.executeScript(tab.id, {code:"killVP()"});
-	});
-});
-
 $('#diabetic-ret a').bind('click focus', function(e){
 	var num = $(this).html();
 	var img = 'images/diabetische-retinopathie-'+num+'.png';
