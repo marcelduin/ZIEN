@@ -87,7 +87,7 @@ a.info:hover + p.info-panel {
 .accordion-header {
 	padding:0;
 	margin:0;
-	background: #f8fcff;
+	background: #e9eff4;
 	border-radius: 3px;
 	border: 1px solid #005581;
 	-webkit-transition: background .2s ease-in-out, border-radius .2s ease-in-out, border-bottom-color .2s ease-in-out;
@@ -140,9 +140,27 @@ a.info:hover + p.info-panel {
 .accordion-content p.slider { margin:5px 0; padding: 0 10px; }
 .accordion-content input[type=range] { width:100%; }
 .stadia { margin:0; padding:5px 10px; list-style: none; width:100%; -webkit-box-sizing: border-box; overflow:hidden; }
-.stadia li { float:left; width:20%; -webkit-box-sizing: border-box;	border:2px solid #999; }
-.stadia li a { display:block; text-align:center; font-weight:bold; color:#333; padding: 2px; cursor:pointer; }
-.stadia li + li { border-left:none; }
+.stadia li {
+	float:left;
+	width:45px;
+	-webkit-box-sizing: border-box;
+	border: 2px solid #999;
+	border-radius: 3px;
+	margin: 0 2px;
+}
+.stadia li a {
+	display:block;
+	text-align:center;
+	font-weight:bold;
+	color:#333;
+	padding: 2px;
+	cursor:pointer;
+	background-color: #fff;
+	-webkit-transition: background-color .2s ease-in-out;
+}
+.stadia li a:hover {
+	background-color: #e9eff4;
+}
 .stadia#staar li,
 .stadia#slechtziend li { width:16.66666666666667%; }
 
