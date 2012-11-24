@@ -42,15 +42,6 @@ chrome.extension.sendMessage({action:'getCurrentSettings'},function(d){
 });
 
 
-var n = 0;
-$('#ext-body').bind('mousemove', function(){
-	$('#test-msg').html('moving inside extension: ' + n);
-	n++;
-
-	chrome.tabs.getSelected(null, function(tab) {
-		//chrome.tabs.executeScript(tab.id, {code:"killVP()"});
-	});
-});
 var aClicked = false;
 $('#diabetic-ret a').bind('click focus', function(e){
 	var num = $(this).html();
