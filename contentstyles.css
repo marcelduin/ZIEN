@@ -1,0 +1,27 @@
+body.re-cursor,
+body.re-cursor * { cursor: crosshair !important; }
+
+#sight-cover {
+	display:none;
+	-webkit-transition: all 1.0s ease-out;
+}
+
+#sight-cover.diabetic-ret {
+	background-repeat:repeat;
+	background-position:0 0;
+}
+#sight-cover.macula-deg {
+	background-repeat:no-repeat;
+	background-position:50% 50%;
+	background-size:cover;
+}
+#sight-cover.glaucoom {
+	background-repeat:no-repeat;
+	background-position:-60px 50%;
+	background-size:cover;
+}
+#sight-cover.ret-pigmentosa {
+	background-repeat:no-repeat;
+	background-position:50% 50%;
+	background-size:cover;
+}

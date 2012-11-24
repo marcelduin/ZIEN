@@ -1,0 +1,46 @@
+{
+  "name": "See",
+  "version": "1.0",
+  "manifest_version": 2,
+  "description": "See",
+  "browser_action": {
+    "default_title": "See",
+    "default_icon": "icon.png",
+    "default_popup": "popup.html"
+  },
+  "background": {
+  	"scripts": ["com.js"]
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "css": ["contentstyles.css"],
+      "js": ["contentscript.js","zien.js"]
+    }
+  ],
+  "permissions": [
+    "tabs", "http://*/*", "https://*/*"
+  ],
+  "web_accessible_resources": [
+    "images/diabetische-retinopathie-1.png",
+    "images/diabetische-retinopathie-2.png",
+    "images/diabetische-retinopathie-3.png",
+    "images/diabetische-retinopathie-4.png",
+    "images/diabetische-retinopathie-5.png",
+    "images/glaucoom-1.png",
+    "images/glaucoom-2.png",
+    "images/glaucoom-3.png",
+    "images/glaucoom-4.png",
+    "images/glaucoom-5.png",
+    "images/macula-degeneratie-1.png",
+    "images/macula-degeneratie-2.png",
+    "images/macula-degeneratie-3.png",
+    "images/macula-degeneratie-4.png",
+    "images/Retinitis-pigmentosa-1.png",
+    "images/Retinitis-pigmentosa-2.png",
+    "images/Retinitis-pigmentosa-3.png",
+    "images/Retinitis-pigmentosa-4.png",
+    "images/Retinitis-pigmentosa-5.png",
+    "anomalies.svg"
+  ]
+}
