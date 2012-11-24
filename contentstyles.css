@@ -3,10 +3,7 @@ body.re-cursor * { cursor: crosshair !important; }
 
 #sight-cover {
 	display:none;
-	//-webkit-transform: translate3d(0,0,0);
-	//transform: translate3d(0,0,0);
-
-	//-webkit-transition: all 0.3s ease-out;
+	-webkit-transition: background 1s ease-out;
 }
 
 #sight-cover.diabetic-ret {
@@ -20,10 +17,10 @@ body.re-cursor * { cursor: crosshair !important; }
 #sight-cover.glaucoom {
 	background-repeat:no-repeat;
 	background-position:0 50%;
-	background-size:cover;
+	background-size:contain;
 }
 #sight-cover.ret-pigmentosa {
 	background-repeat:no-repeat;
 	background-position:50% 50%;
-	background-size:cover;
+	background-size:contain;
 }

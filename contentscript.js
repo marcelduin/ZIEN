@@ -27,19 +27,13 @@ var See = {};
 
 See.fps = 50;
 
-See.run = (function() {
-  var loops = 0, skipTicks = 1000 / See.fps,
-      maxFrameSkip = 10,
-        nextGameTick = (new Date).getTime();
+var targetX = 0;
+var targetY =0;
 
-  return function() {
-    
-  	document.getElementById("sight-cover").style.left = (0.4*mcoo[0]*ws[0])+'px';
-	document.getElementById("sight-cover").style.top = (-0.4*mcoo[1]*ws[1])+'px';
-    
-  };
-  
-})();
+See.run = function() {
+	document.getElementById("sight-cover").style.left = (0.2*mcoo[0]*ws[0])+'px';
+	document.getElementById("sight-cover").style.top = (-0.2*mcoo[1]*ws[1])+'px';
+};
 
 (function loop(){
        See.run();
