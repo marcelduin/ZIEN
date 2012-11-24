@@ -41,20 +41,10 @@ See.run = (function() {
   
 })();
 
-(function() {
-  var onEachFrame;
-  window.webkitRequestAnimationFrame) {
-    onEachFrame = function(cb) {
-      var _cb = function() { cb(); webkitRequestAnimationFrame(_cb); }
-      _cb();
-    };
-  }
-  
-  window.onEachFrame = onEachFrame;
+(function loop(){
+       See.run();
+       webkitRequestAnimationFrame(loop);
 })();
-
-window.onEachFrame(See.run);
-
 
 var vp_width = 0, vp_height = 0; 
 
