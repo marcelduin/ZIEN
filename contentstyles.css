@@ -3,7 +3,7 @@ body.re-cursor * { cursor: crosshair !important; }
 
 #sight-cover {
 	display:none;
-	-webkit-transition: background 1s ease-out;
+	-webkit-transition: background 1s ease-out, top 0.3s ease-out, left 0.3s ease-out;
 }
 
 #sight-cover.diabetic-ret {
