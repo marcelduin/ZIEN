@@ -20,6 +20,42 @@ vp.style.height = '100%';
 //vp.style.border = '1px solid red';
 document.body.appendChild(vp);
 
+//var mcoo = [0,0];
+//window.onmousemove = function(e){mcoo = [(e.clientX/ws[0])*2-1,-(e.clientY/ws[1])*2+1]};
+
+var See = {};
+
+See.fps = 50;
+
+See.run = (function() {
+  var loops = 0, skipTicks = 1000 / See.fps,
+      maxFrameSkip = 10,
+        nextGameTick = (new Date).getTime();
+
+  return function() {
+    
+  	document.getElementById("sight-cover").style.left = (0.4*mcoo[0]*ws[0])+'px';
+	document.getElementById("sight-cover").style.top = (-0.4*mcoo[1]*ws[1])+'px';
+    
+  };
+  
+})();
+
+(function() {
+  var onEachFrame;
+  window.webkitRequestAnimationFrame) {
+    onEachFrame = function(cb) {
+      var _cb = function() { cb(); webkitRequestAnimationFrame(_cb); }
+      _cb();
+    };
+  }
+  
+  window.onEachFrame = onEachFrame;
+})();
+
+window.onEachFrame(See.run);
+
+
 var vp_width = 0, vp_height = 0; 
 
 function CursorCrosshair(val){
@@ -37,13 +73,6 @@ function CursorCrosshair(val){
 		document.body.setAttribute("class", newClass);
 	}
 }
-
-window.onmousemove = function(e){
-	if(document.getElementById("sight-cover").style.display == 'block'){
-		document.getElementById("sight-cover").style.left = mcoo = [0];
-		document.getElementById("sight-cover").style.top = mcoo = [1];
-	}
-};
 
 function setCover(u){
 	document.getElementById("sight-cover").style.backgroundImage = 'url('+u+')';

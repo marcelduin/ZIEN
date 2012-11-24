@@ -86,7 +86,7 @@ $('#macula-deg a').bind('click focus', function(){
 	var num = $(this).html();
 	var img = 'images/macula-degeneratie-'+num+'.png';
 	chrome.tabs.getSelected(null, function(tab) {
-		chrome.tabs.executeScript(tab.id, {code:"glaucoom('"+img+"')"});
+		chrome.tabs.executeScript(tab.id, {code:"maculaDeg('"+img+"')"});
 		//chrome.tabs.update(tab.id, {selected: true});
 	});
 	//giveElementFocus($(this));
