@@ -9,6 +9,7 @@ $(document).ready(function()
 			$('.active-header').toggleClass('active-header').toggleClass('inactive-header').next().slideToggle(300).toggleClass('open-content');
 			$(this).parent().toggleClass('active-header').toggleClass('inactive-header');
 			$(this).parent().next().slideToggle(300).toggleClass('open-content');
+			currentFilter = $(this).parent().next().find('input[type="range"]').attr('id');
 		}
 		
 		else {
@@ -20,6 +21,8 @@ $(document).ready(function()
 	
 	return false;
 });
+
+var currentFilter;
 
 document.getElementById('slider-protanomaly').onchange = function(){
 	chrome.extension.sendMessage({action:'setProtanomaly',value:this.value});
@@ -41,8 +44,6 @@ chrome.extension.sendMessage({action:'getCurrentSettings'},function(d){
 	for(var x in d) document.getElementById('slider-'+x).value=d[x];
 });
 
-
-var aClicked = false;
 $('#diabetic-ret a').bind('click focus', function(e){
 	var num = $(this).html();
 	var img = 'images/diabetische-retinopathie-'+num+'.png';
@@ -101,9 +102,9 @@ window.document.onkeyup = function (e)
 
 	if (e.keyCode == 8 || e.keyCode == 46) {
 		chrome.tabs.getSelected(null, function(tab) {
-			chrome.tabs.executeScript(tab.id, {code:"killSightCover()"});
-			//chrome.tabs.update(tab.id, {selected: true});
+			chrome.tabs.executeScript(tab.id, {code:"killSightCover();"});
 		});
+		if(currentFilter != undefined) $('#'+currentFilter).attr('value','0').trigger('change');
 	}
 
 }
@@ -112,14 +113,11 @@ $('.stadia a').click(function(){
 	if($(this).parent().parent().hasClass('cursor-crosshair')) {
 		chrome.tabs.getSelected(null, function(tab) {
 			chrome.tabs.executeScript(tab.id, {code:"CursorCrosshair(true)"});
-			//chrome.tabs.update(tab.id, {selected: true});
 		});
-		//$('*').css({cursor:'crosshair'});
 	} else {
 		chrome.tabs.getSelected(null, function(tab) {
 			chrome.tabs.executeScript(tab.id, {code:"CursorCrosshair(false)"});
 		});
-		//$('*').css({cursor:'default'});
 	}
 	
 });

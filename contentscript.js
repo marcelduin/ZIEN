@@ -36,7 +36,7 @@ function setCover(u){
 	vp.style.height = null;
 	vp.style.margin = null;
 
-}
+};
 
 function diabeticRet(imgURL){
 	vp.className = 'diabetic-ret';
@@ -44,7 +44,7 @@ function diabeticRet(imgURL){
 	vp.style.width = 1.5*ws[0]+'px';
 	vp.style.height = 1.5*ws[1]+'px';
 	vp.style.margin = (-0.25*ws[1])+'px 0 0 '+(-0.25*ws[0])+'px';
-}
+};
 
 function retPigmentosa(imgURL){
 	vp.className = 'ret-pigmentosa';
@@ -63,10 +63,27 @@ function maculaDeg(imgURL){
 
 function killSightCover(){
 	vp.style.display = 'none';
+	chrome.extension.sendMessage({action:'setCover',value:null});
 	CursorCrosshair(false);
+};
+
+function killFilters(){
+	imgControl.filters.protanomaly = 0;
+	chrome.extension.sendMessage({action:'setProtanomaly',value:0});
+	imgControl.filters.deutanomaly = 0;
+	chrome.extension.sendMessage({action:'setDeutanomaly',value:0});
+	imgControl.filters.tritanomaly = 0;
+	chrome.extension.sendMessage({action:'setTritanomaly',value:0});
+	imgControl.filters.saturation = 0;
+	chrome.extension.sendMessage({action:'setAchromatopsy',value:0});
+	imgControl.filters.cataract = 0;
+	chrome.extension.sendMessage({action:'setCataract',value:0});
 };
 
 window.document.onkeyup = function (e) {
 	if (!e) e = event;
-	if (e.keyCode == 27) killSightCover();
+	if (e.keyCode == 27){
+		killSightCover();
+		killFilters();
+	}
 };
