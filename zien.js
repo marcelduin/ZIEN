@@ -1,4 +1,3 @@
-// hallo
 //ZIEN
 //by marcel@q42.nl
 
