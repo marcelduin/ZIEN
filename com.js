@@ -1,4 +1,12 @@
 //zien app communication script
+var filters = {
+	protanomaly: 0,
+	deutanomaly: 0,
+	tritanomaly: 0,
+	cataract: 0,
+	achromatopsy: 0,
+	cover: null
+};
 
 chrome.extension.onMessage.addListener(
 	function(request, sender, sendResponse) {
@@ -44,13 +52,4 @@ function setValue(type,value) {
 			}
 		}
 	});
-};
-
-var filters = {
-	protanomaly: 0,
-	deutanomaly: 0,
-	tritanomaly: 0,
-	cataract: 0,
-	achromatopsy: 0,
-	cover: null
 };

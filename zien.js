@@ -25,8 +25,6 @@ if(chrome.extension) {
 }
 else addEventListener('DOMContentLoaded',function(){imgControl = new ImageControl()});
 
-
-
 var xhr = new XMLHttpRequest();
 xhr.onreadystatechange = function(e){
 	if(xhr.readyState==4){
