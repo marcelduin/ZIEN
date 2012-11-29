@@ -208,6 +208,9 @@ function BlurNode() {
 };
 
 requestAnimationFrame = webkitRequestAnimationFrame;
+function addClass(_,n) {if(hasClass(_,n))return;_.className+=' '+n.toLowerCase()};
+function delClass(_,n) {n=n.toLowerCase();if(!hasClass(_,n))return;var c=_.className.split(' ');for(var i=0;i<c.length;i++)if(c[i].toLowerCase()==n){c.splice(i,1);break;}_.className = c.join(' ')};
+function hasClass(_,n) {n=n.toLowerCase();var c=_.className.split(' ');for(var i=0;i<c.length;i++)if(c[i].toLowerCase()==n)return true;return false};
 function getEl(id){return document.getElementById(id)};
 function newEl(name,cl,txt,par){var el = document.createElement(name);if(cl)el.className=cl;if(txt&&txt.length)el.textContent=txt;if(par instanceof Element)par.appendChild(el);return el};
 function db(i,c,s){if((s=i)&&typeof i=='object'&&!(s=''))for(var x in i) try{s+=x+': '+(i[x] instanceof Function?'function(){..}':i[x])+'\n'}catch(e){};console.log(s)};

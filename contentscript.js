@@ -1,18 +1,14 @@
 var vp = document.createElement('div');
 vp.id = 'sight-cover';
 document.body.appendChild(vp);
+var raf = false;
 
-var See = {
-	run: function(){
-		vp.style.left = (0.2*mcoo[0]*ws[0])+'px';
-		vp.style.top = (-0.2*mcoo[1]*ws[1])+'px';
-	}
+function loop(){
+	if(!imgControl.filters.cover) return raf=false;
+	vp.style.left = (0.2*mcoo[0]*ws[0])+'px';
+	vp.style.top = (-0.2*mcoo[1]*ws[1])+'px';
+	if(raf) webkitRequestAnimationFrame(loop);
 };
-
-(function loop(){
-	See.run();
-	webkitRequestAnimationFrame(loop);
-})();
 
 function setCover(u){
 	if(!u) return;
@@ -22,6 +18,7 @@ function setCover(u){
 	vp.style.width = null;
 	vp.style.height = null;
 	vp.style.margin = null;
+	loop(raf=true);
 };
 
 function diabeticRet(imgURL){
@@ -46,7 +43,3 @@ window.document.onkeyup = function (e) {
 		chrome.extension.sendMessage({action:'setCataract',value:0});
 	}
 };
-
-function addClass(_,n) {if(hasClass(_,n))return;_.className+=' '+n.toLowerCase()};
-function delClass(_,n) {n=n.toLowerCase();if(!hasClass(_,n))return;var c=_.className.split(' ');for(var i=0;i<c.length;i++)if(c[i].toLowerCase()==n){c.splice(i,1);break;}_.className = c.join(' ')};
-function hasClass(_,n) {n=n.toLowerCase();var c=_.className.split(' ');for(var i=0;i<c.length;i++)if(c[i].toLowerCase()==n)return true;return false};
