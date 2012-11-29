@@ -19,7 +19,7 @@ function CursorCrosshair(val){
 };
 
 function setCover(u){
-	if(!u) return killSightCover();
+	if(!u) return;
 	u = chrome.extension.getURL(u);
 	vp.style.backgroundImage = 'url('+u+')';
 	vp.style.display = 'block';
@@ -39,7 +39,6 @@ function diabeticRet(imgURL){
 function retPigmentosa(imgURL){vp.className = 'ret-pigmentosa';setCover(imgURL)};
 function glaucoom(imgURL){vp.className = 'glaucoom';setCover(imgURL)};
 function maculaDeg(imgURL){vp.className = 'macula-deg';setCover(imgURL)};
-function killSightCover(){vp.style.display = 'none';CursorCrosshair(false)};
 
 function killFilters(){
 	chrome.extension.sendMessage({action:'setProtanomaly',value:0});

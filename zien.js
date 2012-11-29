@@ -100,7 +100,10 @@ function ImageControl() {
 		set cover(u){
 			u=u=='null'?null:u;
 			if(cover==u) return; cover = u;
-			if(u==null) killSightCover();
+			if(u==null) {
+				vp.style.display='none';
+				CursorCrosshair(false)
+			}
 			else if(/macula/.test(u)) maculaDeg(u);
 			else if(/Retinitis/.test(u)) retPigmentosa(u);
 			else if(/glaucoom/.test(u)) glaucoom(u);
