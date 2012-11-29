@@ -30,7 +30,7 @@ chrome.extension.onMessage.addListener(
 
 function setRValue(type,value) {
 	for(var x in filters)
-		setValue(x,x==type?value:type=='cover'?null:0);
+		setValue(x,x==type?value:x=='cover'?null:0);
 };
 
 function setValue(type,value) {

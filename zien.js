@@ -98,10 +98,10 @@ function ImageControl() {
 		set blurNodes(b){_btoggle.checked=b;_btoggle.onchange()},
 		get cover(){return cover},
 		set cover(u){
-			if(cover==u) return;
-			cover = u;
-			killSightCover();
-			if(/macula/.test(u)) maculaDeg(u);
+			u=u=='null'?null:u;
+			if(cover==u) return; cover = u;
+			if(u==null) killSightCover();
+			else if(/macula/.test(u)) maculaDeg(u);
 			else if(/Retinitis/.test(u)) retPigmentosa(u);
 			else if(/glaucoom/.test(u)) glaucoom(u);
 			else if(/diabetische/.test(u)) diabeticRet(u);

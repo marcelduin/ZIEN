@@ -15,15 +15,7 @@ var See = {
 })();
 
 function CursorCrosshair(val){
-	var currentClass = String(document.body.getAttribute("class"));
-	if(val == true && currentClass.indexOf("re-cursor")<0){
-		var newClass = currentClass + " re-cursor";
-		if(currentClass=="null") newClass = "re-cursor";
-		document.body.setAttribute("class", newClass);
-	}else if(val == false && currentClass.indexOf("re-cursor")>=0){
-		var newClass = currentClass.replace("re-cursor","");
-		document.body.setAttribute("class", newClass);
-	}
+	window[(val?'add':'del')+'Class'](document.body,'re-cursor');
 };
 
 function setCover(u){
@@ -34,7 +26,6 @@ function setCover(u){
 	vp.style.width = null;
 	vp.style.height = null;
 	vp.style.margin = null;
-
 };
 
 function diabeticRet(imgURL){
@@ -45,25 +36,10 @@ function diabeticRet(imgURL){
 	vp.style.margin = (-0.25*ws[1])+'px 0 0 '+(-0.25*ws[0])+'px';
 };
 
-function retPigmentosa(imgURL){
-	vp.className = 'ret-pigmentosa';
-	setCover(imgURL);
-};
-
-function glaucoom(imgURL){
-	vp.className = 'glaucoom';
-	setCover(imgURL);
-};
-
-function maculaDeg(imgURL){
-	vp.className = 'macula-deg';
-	setCover(imgURL);
-};
-
-function killSightCover(){
-	vp.style.display = 'none';
-	CursorCrosshair(false);
-};
+function retPigmentosa(imgURL){vp.className = 'ret-pigmentosa';setCover(imgURL)};
+function glaucoom(imgURL){vp.className = 'glaucoom';setCover(imgURL)};
+function maculaDeg(imgURL){vp.className = 'macula-deg';setCover(imgURL)};
+function killSightCover(){vp.style.display = 'none';CursorCrosshair(false)};
 
 function killFilters(){
 	chrome.extension.sendMessage({action:'setProtanomaly',value:0});
@@ -80,3 +56,7 @@ window.document.onkeyup = function (e) {
 		killFilters();
 	}
 };
+
+function addClass(_,n) {if(hasClass(_,n))return;_.className+=' '+n.toLowerCase()};
+function delClass(_,n) {n=n.toLowerCase();if(!hasClass(_,n))return;var c=_.className.split(' ');for(var i=0;i<c.length;i++)if(c[i].toLowerCase()==n){c.splice(i,1);break;}_.className = c.join(' ')};
+function hasClass(_,n) {n=n.toLowerCase();var c=_.className.split(' ');for(var i=0;i<c.length;i++)if(c[i].toLowerCase()==n)return true;return false};

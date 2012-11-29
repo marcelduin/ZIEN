@@ -1,5 +1,6 @@
-$(document).ready(function()
-{
+var currentFilter;
+
+$(function() {
 	//Add Inactive Class To All Accordion Headers
 	$('.accordion-header').toggleClass('inactive-header');
 	
@@ -21,8 +22,6 @@ $(document).ready(function()
 	
 	return false;
 });
-
-var currentFilter;
 
 document.getElementById('slider-protanomaly').onchange = function(){
 	chrome.extension.sendMessage({action:'setProtanomaly',value:this.value});
@@ -54,54 +53,29 @@ function refreshSliders() {
 };
 refreshSliders();
 
-$('#diabetic-ret a').bind('click focus', function(e){
-	chrome.extension.sendMessage({action:'setCover',value:'images/diabetische-retinopathie-'+this.textContent+'.png'});
-	return false;
-});
-$('#ret-pigmentosa a').bind('click focus', function(){
-	chrome.extension.sendMessage({action:'setCover',value:'images/Retinitis-pigmentosa-'+this.textContent+'.png'});
-	return false;
-});
-$('#glaucoom a').bind('click focus', function(){
-	chrome.extension.sendMessage({action:'setCover',value:'images/glaucoom-'+this.textContent+'.png'});
-	return false;
-});
-$('#macula-deg a').bind('click focus', function(){
-	chrome.extension.sendMessage({action:'setCover',value:'images/macula-degeneratie-'+this.textContent+'.png'});
-	return false;
-});
+function setCover(url) {chrome.extension.sendMessage({action:'setCover',value:url});return false};
+
+$('#ret-pigmentosa a').bind('click focus', function(){return setCover('images/Retinitis-pigmentosa-'+this.textContent+'.png')});
+$('#diabetic-ret a').bind('click focus', function(){return setCover('images/diabetische-retinopathie-'+this.textContent+'.png')});
+$('#glaucoom a').bind('click focus', function(){return setCover('images/glaucoom-'+this.textContent+'.png')});
+$('#macula-deg a').bind('click focus', function(){return setCover('images/macula-degeneratie-'+this.textContent+'.png')});
 
 function giveElementFocus(elt){
 	$('[tabindex="0"]').attr('tabindex','');
 	elt.attr('tabindex','0');
-}
+};
 
 // Key navigation
-window.document.onkeyup = function (e)
-{
-	if (!e)
-		e = event;
-
-	if (e.keyCode == 8 || e.keyCode == 46) {
+window.document.onkeyup = function (e) {
+	e = e || event;
+	if (e.keyCode == 8 || e.keyCode == 46)
 		chrome.extension.sendMessage({action:'setCover',value:null});
-		/*chrome.tabs.getSelected(null, function(tab) {
-			chrome.tabs.executeScript(tab.id, {code:"killSightCover();"});
-		});*/
-		//if(currentFilter != undefined) $('#'+currentFilter).attr('value','0').trigger('change');
-	}
-
 }
 
 $('.stadia a').click(function(){
-	if($(this).parent().parent().hasClass('cursor-crosshair')) {
-		chrome.tabs.getSelected(null, function(tab) {
-			chrome.tabs.executeScript(tab.id, {code:"CursorCrosshair(true)"});
-		});
-	} else {
-		chrome.tabs.getSelected(null, function(tab) {
-			chrome.tabs.executeScript(tab.id, {code:"CursorCrosshair(false)"});
-		});
-	}
-	
+	var cross = $(this).parent().parent().hasClass('cursor-crosshair');
+	chrome.tabs.getSelected(null, function(tab) {
+		chrome.tabs.executeScript(tab.id, {code:"CursorCrosshair("+cross+")"});
+	});
 });
 
