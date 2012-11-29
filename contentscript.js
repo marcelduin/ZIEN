@@ -21,7 +21,6 @@ function CursorCrosshair(val){
 		if(currentClass=="null") newClass = "re-cursor";
 		document.body.setAttribute("class", newClass);
 	}else if(val == false && currentClass.indexOf("re-cursor")>=0){
-		console.log(currentClass);
 		var newClass = currentClass.replace("re-cursor","");
 		document.body.setAttribute("class", newClass);
 	}
@@ -63,27 +62,21 @@ function maculaDeg(imgURL){
 
 function killSightCover(){
 	vp.style.display = 'none';
-	chrome.extension.sendMessage({action:'setCover',value:null});
 	CursorCrosshair(false);
 };
 
 function killFilters(){
-	imgControl.filters.protanomaly = 0;
 	chrome.extension.sendMessage({action:'setProtanomaly',value:0});
-	imgControl.filters.deutanomaly = 0;
 	chrome.extension.sendMessage({action:'setDeutanomaly',value:0});
-	imgControl.filters.tritanomaly = 0;
 	chrome.extension.sendMessage({action:'setTritanomaly',value:0});
-	imgControl.filters.saturation = 0;
 	chrome.extension.sendMessage({action:'setAchromatopsy',value:0});
-	imgControl.filters.cataract = 0;
 	chrome.extension.sendMessage({action:'setCataract',value:0});
 };
 
 window.document.onkeyup = function (e) {
 	if (!e) e = event;
 	if (e.keyCode == 27){
-		killSightCover();
+		chrome.extension.sendMessage({action:'setCover',value:null});
 		killFilters();
 	}
 };

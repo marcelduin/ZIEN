@@ -26,66 +26,48 @@ var currentFilter;
 
 document.getElementById('slider-protanomaly').onchange = function(){
 	chrome.extension.sendMessage({action:'setProtanomaly',value:this.value});
+	refreshSliders();
 };
 document.getElementById('slider-deutanomaly').onchange = function(){
 	chrome.extension.sendMessage({action:'setDeutanomaly',value:this.value});
+	refreshSliders();
 };
 document.getElementById('slider-tritanomaly').onchange = function(){
 	chrome.extension.sendMessage({action:'setTritanomaly',value:this.value});
+	refreshSliders();
 };
 document.getElementById('slider-achromatopsy').onchange = function(){
 	chrome.extension.sendMessage({action:'setAchromatopsy',value:this.value});
+	refreshSliders();
 };
 document.getElementById('slider-cataract').onchange = function(){
 	chrome.extension.sendMessage({action:'setCataract',value:this.value});
+	refreshSliders();
 };
 
-chrome.extension.sendMessage({action:'getCurrentSettings'},function(d){
-	for(var x in d) document.getElementById('slider-'+x).value=d[x];
-});
+function refreshSliders() {
+	chrome.extension.sendMessage({action:'getCurrentSettings'},function(d){
+		var cover = d.cover;
+		delete d.cover;
+		for(var x in d) document.getElementById('slider-'+x).value=d[x];
+	});
+};
+refreshSliders();
 
 $('#diabetic-ret a').bind('click focus', function(e){
-	var num = $(this).html();
-	var img = 'images/diabetische-retinopathie-'+num+'.png';
-	chrome.tabs.getSelected(null, function(tab) {
-		chrome.tabs.executeScript(tab.id, {code:"diabeticRet('"+img+"')"});
-		//chrome.tabs.update(tab.id, {selected: true});
-	});
-	chrome.extension.sendMessage({action:'setCover',value:img});
-	//giveElementFocus($(this));
+	chrome.extension.sendMessage({action:'setCover',value:'images/diabetische-retinopathie-'+this.textContent+'.png'});
 	return false;
 });
 $('#ret-pigmentosa a').bind('click focus', function(){
-	var num = $(this).html();
-	var img = 'images/Retinitis-pigmentosa-'+num+'.png';
-	chrome.tabs.getSelected(null, function(tab) {
-		chrome.tabs.executeScript(tab.id, {code:"retPigmentosa('"+img+"')"});
-		//chrome.tabs.update(tab.id, {selected: true});
-	});
-	//giveElementFocus($(this));
-	chrome.extension.sendMessage({action:'setCover',value:img});
+	chrome.extension.sendMessage({action:'setCover',value:'images/Retinitis-pigmentosa-'+this.textContent+'.png'});
 	return false;
 });
 $('#glaucoom a').bind('click focus', function(){
-	var num = $(this).html();
-	var img = 'images/glaucoom-'+num+'.png';
-	chrome.tabs.getSelected(null, function(tab) {
-		chrome.tabs.executeScript(tab.id, {code:"glaucoom('"+img+"')"});
-		//chrome.tabs.update(tab.id, {selected: true});
-	});
-	//giveElementFocus($(this));
-	chrome.extension.sendMessage({action:'setCover',value:img});
+	chrome.extension.sendMessage({action:'setCover',value:'images/glaucoom-'+this.textContent+'.png'});
 	return false;
 });
 $('#macula-deg a').bind('click focus', function(){
-	var num = $(this).html();
-	var img = 'images/macula-degeneratie-'+num+'.png';
-	chrome.tabs.getSelected(null, function(tab) {
-		chrome.tabs.executeScript(tab.id, {code:"maculaDeg('"+img+"')"});
-		//chrome.tabs.update(tab.id, {selected: true});
-	});
-	//giveElementFocus($(this));
-	chrome.extension.sendMessage({action:'setCover',value:img});
+	chrome.extension.sendMessage({action:'setCover',value:'images/macula-degeneratie-'+this.textContent+'.png'});
 	return false;
 });
 
@@ -101,10 +83,11 @@ window.document.onkeyup = function (e)
 		e = event;
 
 	if (e.keyCode == 8 || e.keyCode == 46) {
-		chrome.tabs.getSelected(null, function(tab) {
+		chrome.extension.sendMessage({action:'setCover',value:null});
+		/*chrome.tabs.getSelected(null, function(tab) {
 			chrome.tabs.executeScript(tab.id, {code:"killSightCover();"});
-		});
-		if(currentFilter != undefined) $('#'+currentFilter).attr('value','0').trigger('change');
+		});*/
+		//if(currentFilter != undefined) $('#'+currentFilter).attr('value','0').trigger('change');
 	}
 
 }

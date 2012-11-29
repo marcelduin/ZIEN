@@ -19,28 +19,23 @@ if(chrome.extension) {
 	imgControl = new ImageControl();
 	setTimeout(function(){
 		chrome.extension.sendMessage({action:'getCurrentSettings'},function(d){
-			if(d.cover) {
-				if(/macula/.test(d.cover)) maculaDeg(d.cover);
-				else if(/Retinitis/.test(d.cover)) retPigmentosa(d.cover);
-				else if(/glaucoom/.test(d.cover)) glaucoom(d.cover);
-				else if(/diabetische/.test(d.cover)) diabeticRet(d.cover);
-			}
-			delete d.cover;
 			for(var x in d) imgControl.filters[x]=d[x];
 		})
 	});
 }
 else addEventListener('DOMContentLoaded',function(){imgControl = new ImageControl()});
 
+
+
 var xhr = new XMLHttpRequest();
 xhr.onreadystatechange = function(e){
-  if(xhr.readyState==4){
-    if(xhr.status!=200) return console.error('Your browser does not support cross-domain XHR!');
+	if(xhr.readyState==4){
+		if(xhr.status!=200) return console.error('Your browser does not support cross-domain XHR!');
 		var el = document.createElement('div');
 		el.style.display = 'none';
 		el.innerHTML = xhr.responseText;
 		document.body.appendChild(el);
-  }
+	}
 };
 xhr.open('GET',fu,true);
 xhr.send(null);
@@ -86,6 +81,8 @@ function ImageControl() {
 	_btype.onchange = function(){ctype=Number(_btype.value)};
 	_btype.title = 'blurry node type';
 
+	var cover = null;
+
 	this.filters = {
 		get protanomaly(){return sls[0].value},
 		set protanomaly(v){sls[0].value=v;redraw()},
@@ -98,7 +95,17 @@ function ImageControl() {
 		get achromatopsy(){return sls[4].value},
 		set achromatopsy(v){sls[4].value=1-v*1;redraw()},
 		get blurNodes(){return _btoggle.checked},
-		set blurNodes(b){_btoggle.checked=b;_btoggle.onchange()}
+		set blurNodes(b){_btoggle.checked=b;_btoggle.onchange()},
+		get cover(){return cover},
+		set cover(u){
+			if(cover==u) return;
+			cover = u;
+			killSightCover();
+			if(/macula/.test(u)) maculaDeg(u);
+			else if(/Retinitis/.test(u)) retPigmentosa(u);
+			else if(/glaucoom/.test(u)) glaucoom(u);
+			else if(/diabetische/.test(u)) diabeticRet(u);
+		}
 	}
 };
 
