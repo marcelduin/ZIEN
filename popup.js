@@ -1,46 +1,40 @@
 var currentFilter;
 
-$(function() {
-	//Add Inactive Class To All Accordion Headers
-	$('.accordion-header').toggleClass('inactive-header');
+//Add Inactive Class To All Accordion Headers
+$('.accordion-header').toggleClass('inactive-header');
+
+// The Accordion Effect
+$('.accordion-header a').click(function () {
+	if($(this).parent().is('.inactive-header')) {
+		$('.active-header').toggleClass('active-header').toggleClass('inactive-header').next().slideToggle(300).toggleClass('open-content');
+		$(this).parent().toggleClass('active-header').toggleClass('inactive-header');
+		$(this).parent().next().slideToggle(300).toggleClass('open-content');
+		currentFilter = $(this).parent().next().find('input[type="range"]').attr('id');
+	}
 	
-	// The Accordion Effect
-	$('.accordion-header a').click(function () {
-		if($(this).parent().is('.inactive-header')) {
-			$('.active-header').toggleClass('active-header').toggleClass('inactive-header').next().slideToggle(300).toggleClass('open-content');
-			$(this).parent().toggleClass('active-header').toggleClass('inactive-header');
-			$(this).parent().next().slideToggle(300).toggleClass('open-content');
-			currentFilter = $(this).parent().next().find('input[type="range"]').attr('id');
-		}
-		
-		else {
-			$(this).parent().toggleClass('active-header').toggleClass('inactive-header');
-			$(this).parent().next().slideToggle(300).toggleClass('open-content');
-		}
-		return false;
-	});
-	
+	else {
+		$(this).parent().toggleClass('active-header').toggleClass('inactive-header');
+		$(this).parent().next().slideToggle(300).toggleClass('open-content');
+	}
 	return false;
 });
 
-document.getElementById('slider-protanomaly').onchange = function(){
-	chrome.extension.sendMessage({action:'setProtanomaly',value:this.value});
-	refreshSliders();
-};
-document.getElementById('slider-deutanomaly').onchange = function(){
-	chrome.extension.sendMessage({action:'setDeutanomaly',value:this.value});
-	refreshSliders();
-};
-document.getElementById('slider-tritanomaly').onchange = function(){
-	chrome.extension.sendMessage({action:'setTritanomaly',value:this.value});
-	refreshSliders();
-};
-document.getElementById('slider-achromatopsy').onchange = function(){
-	chrome.extension.sendMessage({action:'setAchromatopsy',value:this.value});
-	refreshSliders();
-};
-document.getElementById('slider-cataract').onchange = function(){
-	chrome.extension.sendMessage({action:'setCataract',value:this.value});
+$('#ret-pigmentosa a').bind('click focus', function(){return setCover('images/Retinitis-pigmentosa-'+this.textContent+'.png')});
+$('#diabetic-ret a').bind('click focus', function(){return setCover('images/diabetische-retinopathie-'+this.textContent+'.png')});
+$('#glaucoom a').bind('click focus', function(){return setCover('images/glaucoom-'+this.textContent+'.png')});
+$('#macula-deg a').bind('click focus', function(){return setCover('images/macula-degeneratie-'+this.textContent+'.png')});
+
+function setCover(url) {chrome.extension.sendMessage({action:'setCover',value:url});return false};
+
+$('#slider-protanomaly').change(changeSlider);
+$('#slider-deutanomaly').change(changeSlider);
+$('#slider-tritanomaly').change(changeSlider);
+$('#slider-achromatopsy').change(changeSlider);
+$('#slider-cataract').change(changeSlider);
+
+function changeSlider(p) {
+	var p=this.id.replace('slider-','');
+	chrome.extension.sendMessage({action:'set'+p.substr(0,1).toUpperCase()+p.substr(1),value:this.value});
 	refreshSliders();
 };
 
@@ -52,13 +46,6 @@ function refreshSliders() {
 	});
 };
 refreshSliders();
-
-function setCover(url) {chrome.extension.sendMessage({action:'setCover',value:url});return false};
-
-$('#ret-pigmentosa a').bind('click focus', function(){return setCover('images/Retinitis-pigmentosa-'+this.textContent+'.png')});
-$('#diabetic-ret a').bind('click focus', function(){return setCover('images/diabetische-retinopathie-'+this.textContent+'.png')});
-$('#glaucoom a').bind('click focus', function(){return setCover('images/glaucoom-'+this.textContent+'.png')});
-$('#macula-deg a').bind('click focus', function(){return setCover('images/macula-degeneratie-'+this.textContent+'.png')});
 
 function giveElementFocus(elt){
 	$('[tabindex="0"]').attr('tabindex','');
