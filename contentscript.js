@@ -14,10 +14,6 @@ var See = {
 	webkitRequestAnimationFrame(loop);
 })();
 
-function CursorCrosshair(val){
-	window[(val?'add':'del')+'Class'](document.body,'re-cursor');
-};
-
 function setCover(u){
 	if(!u) return;
 	u = chrome.extension.getURL(u);

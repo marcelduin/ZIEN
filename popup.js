@@ -23,33 +23,19 @@ $('#ret-pigmentosa a').bind('click focus', function(){return setCover('images/Re
 $('#diabetic-ret a').bind('click focus', function(){return setCover('images/diabetische-retinopathie-'+this.textContent+'.png')});
 $('#glaucoom a').bind('click focus', function(){return setCover('images/glaucoom-'+this.textContent+'.png')});
 $('#macula-deg a').bind('click focus', function(){return setCover('images/macula-degeneratie-'+this.textContent+'.png')});
+$('#slider-protanomaly,#slider-deutanomaly,#slider-tritanomaly,#slider-achromatopsy,#slider-cataract').change(changeSlider);
+
+refreshSliders();
 
 function setCover(url) {chrome.extension.sendMessage({action:'setCover',value:url});return false};
-
-$('#slider-protanomaly').change(changeSlider);
-$('#slider-deutanomaly').change(changeSlider);
-$('#slider-tritanomaly').change(changeSlider);
-$('#slider-achromatopsy').change(changeSlider);
-$('#slider-cataract').change(changeSlider);
-
-function changeSlider(p) {
-	var p=this.id.replace('slider-','');
-	chrome.extension.sendMessage({action:'set'+p.substr(0,1).toUpperCase()+p.substr(1),value:this.value});
-	refreshSliders();
-};
-
+function changeSlider(p) {var p=this.id.replace('slider-','');chrome.extension.sendMessage({action:'set'+p.substr(0,1).toUpperCase()+p.substr(1),value:this.value});refreshSliders()};
+function giveElementFocus(elt){$('[tabindex="0"]').attr('tabindex','');elt.attr('tabindex','0')};
 function refreshSliders() {
 	chrome.extension.sendMessage({action:'getCurrentSettings'},function(d){
 		var cover = d.cover;
 		delete d.cover;
 		for(var x in d) document.getElementById('slider-'+x).value=d[x];
 	});
-};
-refreshSliders();
-
-function giveElementFocus(elt){
-	$('[tabindex="0"]').attr('tabindex','');
-	elt.attr('tabindex','0');
 };
 
 // Key navigation
@@ -58,11 +44,3 @@ window.document.onkeyup = function (e) {
 	if (e.keyCode == 8 || e.keyCode == 46)
 		chrome.extension.sendMessage({action:'setCover',value:null});
 }
-
-$('.stadia a').click(function(){
-	var cross = $(this).parent().parent().hasClass('cursor-crosshair');
-	chrome.tabs.getSelected(null, function(tab) {
-		chrome.tabs.executeScript(tab.id, {code:"CursorCrosshair("+cross+")"});
-	});
-});
-

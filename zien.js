@@ -98,14 +98,12 @@ function ImageControl() {
 		set cover(u){
 			u=u=='null'?null:u;
 			if(cover==u) return; cover = u;
-			if(u==null) {
-				vp.style.display='none';
-				CursorCrosshair(false)
-			}
+			if(u==null) vp.style.display='none';
 			else if(/macula/.test(u)) maculaDeg(u);
 			else if(/Retinitis/.test(u)) retPigmentosa(u);
 			else if(/glaucoom/.test(u)) glaucoom(u);
 			else if(/diabetische/.test(u)) diabeticRet(u);
+			window[(u!=null?'add':'del')+'Class'](document.body,'re-cursor');
 		}
 	}
 };
