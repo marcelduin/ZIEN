@@ -18,7 +18,7 @@ function setCover(u){
 	vp.style.width = null;
 	vp.style.height = null;
 	vp.style.margin = null;
-	loop(raf=true);
+	if(!raf) loop(raf=true);
 };
 
 function diabeticRet(imgURL){
