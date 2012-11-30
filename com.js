@@ -14,22 +14,22 @@ chrome.extension.onMessage.addListener(
 			case 'getCurrentSettings':
 				sendResponse(filters);
 				break;
-			case 'setProtanomaly':
+			case 'protanomaly':
 				setRValue('protanomaly',request.value);
 				break;
-			case 'setDeutanomaly':
+			case 'deutanomaly':
 				setRValue('deutanomaly',request.value);
 				break;
-			case 'setTritanomaly':
+			case 'tritanomaly':
 				setRValue('tritanomaly',request.value);
 				break;
-			case 'setCataract':
+			case 'cataract':
 				setRValue('cataract',request.value);
 				break;
-			case 'setAchromatopsy':
+			case 'achromatopsy':
 				setRValue('achromatopsy',request.value);
 				break;
-			case 'setCover':
+			case 'cover':
 				setRValue('cover',request.value);
 				break;
 		}

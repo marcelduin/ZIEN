@@ -27,8 +27,8 @@ $('#slider-protanomaly,#slider-deutanomaly,#slider-tritanomaly,#slider-achromato
 
 refreshSliders();
 
-function setCover(url) {chrome.extension.sendMessage({action:'setCover',value:url});return false};
-function changeSlider(p) {var p=this.id.replace('slider-','');chrome.extension.sendMessage({action:'set'+p.substr(0,1).toUpperCase()+p.substr(1),value:this.value});refreshSliders()};
+function setCover(url) {chrome.extension.sendMessage({action:'cover',value:url});return false};
+function changeSlider(p) {var p=this.id.replace('slider-','');chrome.extension.sendMessage({action:p,value:this.value});refreshSliders()};
 function giveElementFocus(elt){$('[tabindex="0"]').attr('tabindex','');elt.attr('tabindex','0')};
 function refreshSliders() {
 	chrome.extension.sendMessage({action:'getCurrentSettings'},function(d){

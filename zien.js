@@ -1,5 +1,4 @@
-//ZIEN
-//by marcel@q42.nl
+//by marcel@q42.nl & johan@q42.nl
 
 var ws = [0,0],mcoo = [0,0];
 window.onmousemove = function(e){mcoo = [(e.clientX/ws[0])*2-1,-(e.clientY/ws[1])*2+1]};
@@ -14,30 +13,53 @@ var blurTypes = {
 	circle: 2
 };
 var html = document.getElementsByTagName('html')[0];
+var vp = document.createElement('div');
+vp.id = 'sight-cover';
+document.body.appendChild(vp);
+var raf = false;
 
-if(chrome.extension) {
-	imgControl = new ImageControl();
-	setTimeout(function(){
-		chrome.extension.sendMessage({action:'getCurrentSettings'},function(d){
-			for(var x in d) imgControl.filters[x]=d[x];
-		})
-	});
-}
-else addEventListener('DOMContentLoaded',function(){imgControl = new ImageControl()});
-
-var xhr = new XMLHttpRequest();
-xhr.onreadystatechange = function(e){
-	if(xhr.readyState==4){
-		if(xhr.status!=200) return console.error('Your browser does not support cross-domain XHR!');
-		var el = document.createElement('div');
-		el.style.display = 'none';
-		el.innerHTML = xhr.responseText;
-		document.body.appendChild(el);
-	}
+var def = {
+	protanomaly: 0,
+	deutanomaly: 0,
+	tritanomaly: 0,
+	cataract: 0,
+	achromatopsy: 0,
+	cover: null
 };
-xhr.open('GET',fu,true);
-xhr.send(null);
 
+
+//eye conditions
+function setCover(u){
+	if(!u) return;
+	u = chrome.extension.getURL(u);
+	vp.style.backgroundImage = 'url('+u+')';
+	vp.style.display = 'block';
+	vp.style.width = null;
+	vp.style.height = null;
+	vp.style.margin = null;
+	if(!raf) loop(raf=true);
+};
+
+function loop(){
+	if(!imgControl.filters.cover) return raf=false;
+	vp.style.left = (0.2*mcoo[0]*ws[0])+'px';
+	vp.style.top = (-0.2*mcoo[1]*ws[1])+'px';
+	if(raf) webkitRequestAnimationFrame(loop);
+};
+
+function diabeticRet(imgURL){
+	vp.className = 'diabetic-ret';
+	setCover(imgURL);
+	vp.style.width = 1.5*ws[0]+'px';
+	vp.style.height = 1.5*ws[1]+'px';
+	vp.style.margin = (-0.25*ws[1])+'px 0 0 '+(-0.25*ws[0])+'px';
+};
+function retPigmentosa(imgURL){vp.className = 'ret-pigmentosa';setCover(imgURL)};
+function glaucoom(imgURL){vp.className = 'glaucoom';setCover(imgURL)};
+function maculaDeg(imgURL){vp.className = 'macula-deg';setCover(imgURL)};
+
+
+// colour blindness & cataract
 function ImageControl() {
 	var sliders = ['protanomaly','deuteranomaly','tritanomaly','cataract','achromatopsy'];
 
@@ -131,6 +153,45 @@ function changeColors(prot,deut,trit,cataract,sat) {
 	}
 };
 
+
+//init
+if(chrome.extension) {
+	imgControl = new ImageControl();
+	setTimeout(function(){
+		chrome.extension.sendMessage({action:'getCurrentSettings'},function(d){
+			for(var x in d) imgControl.filters[x]=d[x];
+		})
+	});
+}
+else addEventListener('DOMContentLoaded',function(){imgControl = new ImageControl()});
+
+var xhr = new XMLHttpRequest();
+xhr.onreadystatechange = function(e){
+	if(xhr.readyState==4){
+		if(xhr.status!=200) return console.error('Your browser does not support cross-domain XHR!');
+		var el = document.createElement('div');
+		el.style.display = 'none';
+		el.innerHTML = xhr.responseText;
+		document.body.appendChild(el);
+	}
+};
+xhr.open('GET',fu,true);
+xhr.send(null);
+
+function com(o){for(var x in o) chrome.extension.sendMessage({action:x,value:o[x]})};
+document.onkeyup = function (e) {if (e.keyCode == 27)com(def)};
+
+//to prevent jQuery
+function addClass(_,n) {if(hasClass(_,n))return;_.className+=' '+n.toLowerCase()};
+function delClass(_,n) {n=n.toLowerCase();if(!hasClass(_,n))return;var c=_.className.split(' ');for(var i=0;i<c.length;i++)if(c[i].toLowerCase()==n){c.splice(i,1);break;}_.className = c.join(' ')};
+function hasClass(_,n) {n=n.toLowerCase();var c=_.className.split(' ');for(var i=0;i<c.length;i++)if(c[i].toLowerCase()==n)return true;return false};
+function getEl(id){return document.getElementById(id)};
+function newEl(name,cl,txt,par){var el = document.createElement(name);if(cl)el.className=cl;if(txt&&txt.length)el.textContent=txt;if(par instanceof Element)par.appendChild(el);return el};
+function db(i,c,s){if((s=i)&&typeof i=='object'&&!(s=''))for(var x in i) try{s+=x+': '+(i[x] instanceof Function?'function(){..}':i[x])+'\n'}catch(e){};console.log(s)};
+
+
+//unused: blurnodes
+/*
 function BlurNodes(num) {
 	var running = false,
 		els = [];
@@ -206,11 +267,5 @@ function BlurNode() {
 	this.__defineGetter__('shown',function(){return shown});
 	this.__defineSetter__('shown',function(b){if(b!=shown) document.body[((shown=b)?'append':'remove')+'Child'](blur._el)})
 };
+*/
 
-requestAnimationFrame = webkitRequestAnimationFrame;
-function addClass(_,n) {if(hasClass(_,n))return;_.className+=' '+n.toLowerCase()};
-function delClass(_,n) {n=n.toLowerCase();if(!hasClass(_,n))return;var c=_.className.split(' ');for(var i=0;i<c.length;i++)if(c[i].toLowerCase()==n){c.splice(i,1);break;}_.className = c.join(' ')};
-function hasClass(_,n) {n=n.toLowerCase();var c=_.className.split(' ');for(var i=0;i<c.length;i++)if(c[i].toLowerCase()==n)return true;return false};
-function getEl(id){return document.getElementById(id)};
-function newEl(name,cl,txt,par){var el = document.createElement(name);if(cl)el.className=cl;if(txt&&txt.length)el.textContent=txt;if(par instanceof Element)par.appendChild(el);return el};
-function db(i,c,s){if((s=i)&&typeof i=='object'&&!(s=''))for(var x in i) try{s+=x+': '+(i[x] instanceof Function?'function(){..}':i[x])+'\n'}catch(e){};console.log(s)};
