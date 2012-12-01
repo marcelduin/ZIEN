@@ -15,7 +15,6 @@ var blurTypes = {
 var html = document.getElementsByTagName('html')[0];
 var vp = document.createElement('div');
 vp.id = 'sight-cover';
-document.body.appendChild(vp);
 var raf = false;
 
 var def = {
@@ -118,6 +117,7 @@ function ImageControl() {
 		set blurNodes(b){_btoggle.checked=b;_btoggle.onchange()},
 		get cover(){return cover},
 		set cover(u){
+			if(/^\"/.test(u))u=u.substr(1,u.length-2);
 			u=u=='null'?null:u;
 			if(cover==u) return; cover = u;
 			if(u==null) vp.style.display='none';
@@ -173,6 +173,7 @@ xhr.onreadystatechange = function(e){
 		el.style.display = 'none';
 		el.innerHTML = xhr.responseText;
 		document.body.appendChild(el);
+		document.body.appendChild(vp);
 	}
 };
 xhr.open('GET',fu,true);
