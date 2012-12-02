@@ -7,14 +7,13 @@ $('.accordion-header').toggleClass('inactive-header');
 $('.accordion-header a').click(function () {
 	if($(this).parent().is('.inactive-header')) {
 		$('.active-header').toggleClass('active-header').toggleClass('inactive-header').next().slideToggle(300).toggleClass('open-content');
-		$(this).parent().toggleClass('active-header').toggleClass('inactive-header');
-		$(this).parent().next().slideToggle(300).toggleClass('open-content');
+		$(this).parent().toggleClass('active-header').toggleClass('inactive-header')
+			.next().slideToggle(300).toggleClass('open-content');
 		currentFilter = $(this).parent().next().find('input[type="range"]').attr('id');
 	}
-	
 	else {
-		$(this).parent().toggleClass('active-header').toggleClass('inactive-header');
-		$(this).parent().next().slideToggle(300).toggleClass('open-content');
+		$(this).parent().toggleClass('active-header').toggleClass('inactive-header')
+			.next().slideToggle(300).toggleClass('open-content');
 	}
 	return false;
 });
@@ -49,10 +48,7 @@ function parseFilters(d){
 			else if(/macula/.test(d.cover)) $e=$mac;
 			if(n&&$e&&d[x]) $e.filter('a:contains('+n+')').addClass('active');
 		}
-		else {
-			$e = $('#slider-'+x);
-			$e[0].value=d[x];
-		}
+		else ($e=$('#slider-'+x))[0].value=d[x];
 		if($e&&d[x]) {
 			var $ct = $e.closest('.accordion-content');
 			if(!$ct.hasClass('open-content')) $ct.prev().children('a').click();
@@ -61,8 +57,4 @@ function parseFilters(d){
 };
 
 // Key navigation
-window.document.onkeyup = function (e) {
-	e = e || event;
-	if (e.keyCode == 8 || e.keyCode == 46)
-		chrome.extension.sendMessage({action:'cover',value:null},parseFilters);
-}
+document.onkeyup = function(e){if (e.keyCode==8||e.keyCode==46)chrome.extension.sendMessage({action:'cover',value:null},parseFilters)};
