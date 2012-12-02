@@ -155,7 +155,7 @@ a.info:hover + p.info-panel {
 .stadia { margin:0; padding:5px 10px; list-style: none; width:100%; -webkit-box-sizing: border-box; overflow:hidden; }
 .stadia li {
 	float:left;
-	width:45px;
+	width:40px;
 	-webkit-box-sizing: border-box;
 	border: 2px solid #999;
 	border-radius: 3px;

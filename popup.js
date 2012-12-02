@@ -19,10 +19,11 @@ $('.accordion-header a').click(function () {
 	return false;
 });
 
-var $ret = $('#ret-pigmentosa a').bind('click focus', function(){return setCover('images/Retinitis-pigmentosa-'+this.textContent+'.png',this)});
-var $dia = $('#diabetic-ret a').bind('click focus', function(){return setCover('images/diabetische-retinopathie-'+this.textContent+'.png',this)});
-var $gla = $('#glaucoom a').bind('click focus', function(){return setCover('images/glaucoom-'+this.textContent+'.png',this)});
-var $mac = $('#macula-deg a').bind('click focus', function(){return setCover('images/macula-degeneratie-'+this.textContent+'.png',this)});
+$('a.disable').click(function(e){chrome.extension.sendMessage({action:'cover',value:null},parseFilters);return false});
+var $ret = $('#ret-pigmentosa a:not(.disable)').bind('click focus', function(){return setCover('images/Retinitis-pigmentosa-'+this.textContent+'.png',this)});
+var $dia = $('#diabetic-ret a:not(.disable)').bind('click focus', function(){return setCover('images/diabetische-retinopathie-'+this.textContent+'.png',this)});
+var $gla = $('#glaucoom a:not(.disable)').bind('click focus', function(){return setCover('images/glaucoom-'+this.textContent+'.png',this)});
+var $mac = $('#macula-deg a:not(.disable)').bind('click focus', function(){return setCover('images/macula-degeneratie-'+this.textContent+'.png',this)});
 $('#slider-protanomaly,#slider-deutanomaly,#slider-tritanomaly,#slider-achromatopsy,#slider-cataract').change(changeSlider);
 
 refreshSliders();
@@ -36,10 +37,10 @@ function changeSlider(p) {var p=this.id.replace('slider-','');chrome.extension.s
 function giveElementFocus(elt){$('[tabindex="0"]').attr('tabindex','');elt.attr('tabindex','0')};
 function refreshSliders() {chrome.extension.sendMessage({action:'getCurrentSettings'},parseFilters)};
 function parseFilters(d){
-	console.log('parse..',d);
 	for(var x in d) {
 		var $e = null;
 		if(x=='cover') {
+			if(/^\"/.test(d[x]))d[x]=d[x].substr(1,d[x].length-2);
 			if(!d.cover) { $('a.active').removeClass('active'); continue; }
 			var n = d.cover.replace(/^\".*-(\d)\.png\"$/,'$1');
 			if(/pigmentosa/.test(d.cover)) $e=$ret;
@@ -52,7 +53,7 @@ function parseFilters(d){
 			$e = $('#slider-'+x);
 			$e[0].value=d[x];
 		}
-		if(d[x]) {
+		if($e&&d[x]) {
 			var $ct = $e.closest('.accordion-content');
 			if(!$ct.hasClass('open-content')) $ct.prev().children('a').click();
 		}
@@ -63,5 +64,5 @@ function parseFilters(d){
 window.document.onkeyup = function (e) {
 	e = e || event;
 	if (e.keyCode == 8 || e.keyCode == 46)
-		chrome.extension.sendMessage({action:'setCover',value:null});
+		chrome.extension.sendMessage({action:'cover',value:null},parseFilters);
 }

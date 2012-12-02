@@ -41,7 +41,7 @@ function setRValue(type,value) {
 
 function setValue(type,value) {
 	if(filters[type]==value) return;
-	filters[type]=(type!='cover'?value*1:'"'+value+'"');
+	filters[type]=(type!='cover'?value*1:value!=null?'"'+value+'"':null);
 	chrome.windows.getAll({"populate" : true}, function(windows) {
 		for(var i = 0; i < windows.length; i++) {
 			for(var j = 0; j < windows[i].tabs.length; j++) {
