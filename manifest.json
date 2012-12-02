@@ -14,7 +14,7 @@
   "content_scripts": [
     {
       "matches": ["http://*/*", "https://*/*"],
-      "css": ["contentstyles.css"],
+      "css": ["zien.css"],
       "js": ["zien.js"]
     }
   ],
