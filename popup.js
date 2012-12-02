@@ -42,7 +42,7 @@ function parseFilters(d){
 		if(x=='cover') {
 			if(/^\"/.test(d[x]))d[x]=d[x].substr(1,d[x].length-2);
 			if(!d.cover) { $('a.active').removeClass('active'); continue; }
-			var n = d.cover.replace(/^\".*-(\d)\.png\"$/,'$1');
+			var n = d.cover.replace(/^.*-(\d)\.png$/,'$1');
 			if(/pigmentosa/.test(d.cover)) $e=$ret;
 			else if(/diabetische/.test(d.cover)) $e=$dia;
 			else if(/glaucoom/.test(d.cover)) $e=$gla;
