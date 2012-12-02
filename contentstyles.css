@@ -19,6 +19,7 @@ body.re-cursor * { cursor: crosshair !important; }
 #sight-cover.macula-deg {
 	background-repeat:no-repeat;
 	background-position:50% 50%;
+	-webkit-transform: scale(2);
 }
 #sight-cover.glaucoom {
 	background-repeat:no-repeat;
