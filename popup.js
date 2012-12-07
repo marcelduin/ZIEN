@@ -15,12 +15,11 @@ $('.accordion-header a').click(function() {
 
 $('input[data-role=set-cover]').change(function(){com('cover',this.value*1?'images/'+this.id+'-'+this.value+'.png':null)});
 $('input[data-role=set-color]').change(function(){com(this.id.replace('slider-',''),this.value)});
+document.onkeyup = function(e){if(e.keyCode==8||e.keyCode==46)com('cover',null)};
 
 com('getCurrentSettings');
 
-document.onkeyup = function(e){if (e.keyCode==8||e.keyCode==46)com('cover',null)};
 function com(a,v){chrome.extension.sendMessage({action:a,value:v},parseFilters)};
-//function giveElementFocus(elt){$('[tabindex="0"]').attr('tabindex','');elt.attr('tabindex','0')};
 function parseFilters(d){
 	for(var x in d) {
 		var $e = null;
