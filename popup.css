@@ -146,35 +146,6 @@ a.info:hover + p.info-panel {
 .accordion-content h3 { color: #666; margin:0; padding:0 10px 2px 10px; font-size:12px; font-weight:normal; }
 .accordion-content p.slider { margin:5px 0; padding: 0 10px; }
 .accordion-content input[type=range] { width:100%; }
-.stadia { margin:0; padding:5px 10px; list-style: none; width:100%; -webkit-box-sizing: border-box; overflow:hidden; }
-.stadia li {
-	float:left;
-	width:40px;
-	-webkit-box-sizing: border-box;
-	border: 2px solid #999;
-	border-radius: 3px;
-	margin: 0 2px;
-}
-.stadia li a {
-	display:block;
-	text-align:center;
-	font-weight:bold;
-	color:#333;
-	padding: 2px;
-	cursor:pointer;
-	background-color: #fff;
-	-webkit-transition: background-color .2s ease-in-out;
-}
-.stadia li a:hover {
-	background-color: #e9eff4;
-}
-.stadia li a.active {
-	background-color: #222;
-	color: #fff;
-}
-.stadia#staar li,
-.stadia#slechtziend li { width:16.66666666666667%; }
-
 
 /* footer */
 footer {
