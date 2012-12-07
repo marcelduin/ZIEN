@@ -1,5 +1,5 @@
 body.re-cursor,
-body.re-cursor * { cursor: crosshair !important; }
+body.re-cursor * { cursor: move !important; }
 
 #sight-cover {
 	display:none;
