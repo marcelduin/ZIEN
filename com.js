@@ -10,26 +10,7 @@ var filters = {
 
 chrome.extension.onMessage.addListener(
 	function(request, sender, sendResponse) {
-		switch(request.action) {
-			case 'protanomaly':
-				setRValue('protanomaly',request.value);
-				break;
-			case 'deutanomaly':
-				setRValue('deutanomaly',request.value);
-				break;
-			case 'tritanomaly':
-				setRValue('tritanomaly',request.value);
-				break;
-			case 'cataract':
-				setRValue('cataract',request.value);
-				break;
-			case 'achromatopsy':
-				setRValue('achromatopsy',request.value);
-				break;
-			case 'cover':
-				setRValue('cover',request.value);
-				break;
-		}
+		if(request.action) setRValue(request.action,request.value);
 		if(sendResponse) sendResponse(filters);
 	}
 );

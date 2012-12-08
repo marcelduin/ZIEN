@@ -17,7 +17,7 @@ $('input[data-role=set-cover]').change(function(){com('cover',this.value*1?'imag
 $('input[data-role=set-color]').change(function(){com(this.id.replace('slider-',''),this.value)});
 document.onkeyup = function(e){if(e.keyCode==8||e.keyCode==46)com('cover',null)};
 
-com('getCurrentSettings');
+com();
 
 function com(a,v){chrome.extension.sendMessage({action:a,value:v},parseFilters)};
 function parseFilters(d){
