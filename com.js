@@ -8,17 +8,10 @@ var filters = {
 	cover: null
 };
 
-chrome.extension.onMessage.addListener(
-	function(request, sender, sendResponse) {
-		if(request.action) setRValue(request.action,request.value);
-		if(sendResponse) sendResponse(filters);
-	}
-);
-
-function setRValue(type,value) {
-	for(var x in filters)
-		setValue(x,x==type?value:x=='cover'?null:0);
-};
+chrome.extension.onMessage.addListener(function(r,s,sR) {
+	if(r.action) for(var x in filters) setValue(x,x==r.action?r.value:x=='cover'?null:0);
+	if(sR) sR(filters);
+});
 
 function setValue(type,value) {
 	if(filters[type]==value) return;
