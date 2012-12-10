@@ -163,8 +163,6 @@ footer {
 	background-color: #005581;
 	border-radius: 0 0 3px 3px;
 	text-align: right;
-	vertical-align: top;
-	line-height: 30px;
 	font-size: 10px;
 	color: #fff;
 	font-style: italic;
@@ -172,15 +170,17 @@ footer {
 footer a {
 	color: transparent;
 	display: inline-block;
+	vertical-align: middle;
 	height: 30px;
-	background-size: auto 10px;
 	margin: 0 5px;
 }
 footer a#accessibility {
 	width: 100px;
+	height: 25px;
 	background: transparent url(images/ui/accessibility.png) center center no-repeat;
 }
 footer a#q42 {
 	width: 20px;
+	height: 30px;
 	background: transparent url(images/ui/q42.png) center center no-repeat;
 }
