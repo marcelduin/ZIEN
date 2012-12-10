@@ -36,7 +36,7 @@ h2 {
 	font-size:14px;
 	margin:0 10px;
 	padding:10px 0 6px 0;
-	color: #005581;
+	color: #333;
 }
 p {
 	font-size: 14px;
@@ -56,7 +56,6 @@ a.info {
 	font-size:14px;
 	font-weight:bold;
 	text-decoration: none;
-	outline: none;
 	color:#fff;
 }
 p.info-panel {
@@ -69,7 +68,8 @@ p.info-panel {
 	padding:10px;
 	font-size:13px;
 }
-a.info:hover + p.info-panel { 
+a.info:hover + p.info-panel,
+a.info:focus + p.info-panel { 
 	display:block;
 }
 
@@ -88,11 +88,12 @@ a.info:hover + p.info-panel {
 	margin:0;
 	background: #e9eff4;
 	border-radius: 3px;
-	border: 1px solid #005581;
+	border: 1px solid #333;
 	-webkit-transition: background .2s ease-in-out, border-radius .2s ease-in-out, border-bottom-color .2s ease-in-out;
 	background-position: right 50%;
 	background-repeat: no-repeat;
 	margin: 5px 0 0 0;
+	font-weight: normal;
 }
 .accordion-header a {
 	display:block;
@@ -103,25 +104,34 @@ a.info:hover + p.info-panel {
 	color: #333;
 }
 
+.accordion-header a:hover,
+.accordion-header a:focus {
+	text-decoration: underline;
+}
+
 .active-header {
-	background-image: url(images/ui/active-header.gif);
 	border-radius: 3px 3px 0 0;
 	border-bottom-color: transparent;
+	font-weight: bold;
 }
 
-.active-header:hover {
-	background-image: url(images/ui/active-header.gif);
+.active-header:hover,
+.inactive-header:hover {	
 	background-color: #fff;
 }
 
-.inactive-header {
-	background-image: url(images/ui/inactive-header.gif);
+
+.accordion-header a:after {
+	content: "∧";
+	float:right;
+	color: #005581;
+}
+.inactive-header a:after {
+	content:"∨";
+	float:right;
+	color: #005581;
 }
 
-.inactive-header:hover {
-	background-image: url(images/ui/inactive-header.gif);
-	background-color: #fff;
-}
 
 .accordion-content {
 	display: none;
@@ -166,9 +176,9 @@ footer a {
 	background-size: auto 10px;
 	margin: 0 5px;
 }
-footer a#bartimeus {
-	width: 91px;
-	background: transparent url(images/ui/bartimeus.png) center center no-repeat;
+footer a#accessibility {
+	width: 100px;
+	background: transparent url(images/ui/accessibility.png) center center no-repeat;
 }
 footer a#q42 {
 	width: 20px;
