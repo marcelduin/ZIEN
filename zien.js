@@ -140,7 +140,7 @@ function changeColors(prot,deut,trit,cataract,sat) {
 if(chrome.extension) {
 	imgControl = new ImageControl();
 	setTimeout(function(){
-		chrome.extension.sendMessage({action:'getCurrentSettings'},function(d){
+		chrome.extension.sendMessage({},function(d){
 			for(var x in d) imgControl.filters[x]=d[x];
 		})
 	});
