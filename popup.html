@@ -11,86 +11,83 @@
   
   <header>
     <h1 id="app-logo">Bartim&eacute;us Zien Apps</h1>
+    <div id="lang-select"></div>
     <a href="" class="info">?</a>
-    <p class="info-panel">
-      "Hoe is het om slechtziend te zijn?" Als goedziende mens kom je dat nooit helemaal te weten. Maar door te spelen met ZIEN kun je het je misschien iets beter voorstellen. 
-    </p>
+    <p class="info-panel" local="INTRO"></p>
   </header>
   
-  <h2>Oogaandoeningen</h2>
+  <h2 local="CONDITIONS_TITLE"></h2>
   <div class="accordion-container">
 
-    <h3 class="accordion-header inactive-header"><a href="">Retinitis pigmentosa</a></h3>
+    <h3 class="accordion-header inactive-header"><a href="" local="RETINITIS_PIGMENTOSA"></a></h3>
     <div class="accordion-content">
-      <p class="intro">Informatie over deze aandoening op <a href="http://nl.wikipedia.org/wiki/Retinitis_pigmentosa" target="_blank">WikiPedia</a></p>
+      <p class="intro" local="RETINITIS_PIGMENTOSA_INFO"></p>
       <p class="slider">
         <input type="range" data-role="set-cover" id="ret-pigmentosa" min="0" max="5" step="1" value="0" />
       </p>
     </div>
 
-    <h3 class="accordion-header inactive-header"><a href="">Diabetische retinopathie</a></h3>
+    <h3 class="accordion-header inactive-header"><a href="" local="DIABETIC_RETINOPATHY"></a></h3>
     <div class="accordion-content">
-      <p class="intro">Informatie over deze aandoening op <a href="http://nl.wikipedia.org/wiki/Diabetische_retinopathie" target="_blank">WikiPedia</a></p>
+      <p class="intro" local="DIABETIC_RETINOPATHY_INFO"></p>
       <p class="slider">
         <input type="range" data-role="set-cover" id="diabetic-ret" min="0" max="5" step="1" value="0" />
       </p>
     </div>
      
-    <h3 class="accordion-header inactive-header"><a href="">Glaucoom</a></h3>
+    <h3 class="accordion-header inactive-header"><a href="" local="GLAUCOMA"></a></h3>
     <div class="accordion-content">
-      <p class="intro">Informatie over deze aandoening op <a href="http://nl.wikipedia.org/wiki/Glaucoom" target="_blank">WikiPedia</a></p>
+      <p class="intro" local="GLAUCOMA_INFO"></p>
       <p class="slider">
         <input type="range" data-role="set-cover" id="glaucoom" min="0" max="5" step="1" value="0" />
       </p>
     </div>
-    <h3 class="accordion-header inactive-header"><a href="">Maculadegeneratie</a></h3>
+    <h3 class="accordion-header inactive-header"><a href="" local="MACULAR_DEGENERATION"></a></h3>
     <div class="accordion-content">
-      <p class="intro">Informatie over deze aandoening op <a href="http://nl.wikipedia.org/wiki/Maculadegeneratie" target="_blank">WikiPedia</a></p>
+      <p class="intro" local="MACULAR_DEGENERATION_INFO"></p>
       <p class="slider">
         <input type="range" data-role="set-cover" id="macula-deg" min="0" max="4" step="1" value="0" />
       </p>
     </div>
-    <h3 class="accordion-header inactive-header"><a href="">Staar</a></h3>
+    <h3 class="accordion-header inactive-header"><a href="" local="CATARACT"></a></h3>
       <div class="accordion-content">
-      <p class="intro">Informatie over deze aandoening op <a href="http://nl.wikipedia.org/wiki/Staar" target="_blank">WikiPedia</a></p>
+      <p class="intro" local="CATARACT_INFO"></p>
       <p class="slider">
         <input type="range" data-role="set-color" id="slider-cataract" min="0" max="1" step="0.1" value="0" />
       </p>
     </div>
-    </div>
   </div>
   
-  <h2>Kleurenblindheid</h2>
+  <h2 local="COLOR_BLINDNESS_TITLE"></h2>
   <div class="accordion-container">
     
-
-    <h3 class="accordion-header inactive-header"><a href="">Protanomalie</a></h3>
+    <h3 class="accordion-header inactive-header"><a href="" local="PROTANOMALY"></a></h3>
     <div class="accordion-content">
-      <p class="intro">Informatie over deze aandoening op <a href="http://nl.wikipedia.org/wiki/Kleurenblindheid" target="_blank">WikiPedia</a></p>
+      <p class="intro" local="PROTANOMALY_INFO"></p>
       <p class="slider">
         <input type="range" data-role="set-color" id="slider-protanomaly" min="0" max="1" step="0.1" value="0" />
       </p>
     </div>
 
-    <h3 class="accordion-header inactive-header"><a href="">Deuteranomalie</a></h3>
+    <h3 class="accordion-header inactive-header"><a href="" local="DEUTERANOMALY"></a></h3>
     <div class="accordion-content">
-      <p class="intro">Informatie over deze aandoening op <a href="http://nl.wikipedia.org/wiki/Kleurenblindheid" target="_blank">WikiPedia</a></p>
+      <p class="intro" local="DEUTERANOMALY_INFO"></p>
       <p class="slider">
         <input type="range" data-role="set-color" id="slider-deutanomaly" min="0" max="1" step="0.1" value="0" />
       </p>
     </div>
      
-    <h3 class="accordion-header inactive-header"><a href="">Tritanomalie</a></h3>
+    <h3 class="accordion-header inactive-header"><a href="" local="TRITANOMALY"></a></h3>
     <div class="accordion-content">
-      <p class="intro">Informatie over deze aandoening op <a href="http://nl.wikipedia.org/wiki/Kleurenblindheid" target="_blank">WikiPedia</a></p>
+      <p class="intro" local="TRITANOMALY_INFO"></p>
       <p class="slider">
         <input type="range" data-role="set-color" id="slider-tritanomaly" min="0" max="1" step="0.1" value="0" />
       </p>
     </div>
 
-    <h3 class="accordion-header inactive-header"><a href="">Achromatopsie</a></h3>
+    <h3 class="accordion-header inactive-header"><a href="" local="ACHROMATOPSIA"></a></h3>
     <div class="accordion-content">
-      <p class="intro">Informatie over deze aandoening op <a href="http://nl.wikipedia.org/wiki/Kleurenblindheid" target="_blank">WikiPedia</a></p>
+      <p class="intro" local="ACHROMATOPSIA_INFO"></p>
       <p class="slider">
         <input type="range" data-role="set-color" id="slider-achromatopsy" min="0" max="1" step="0.1" value="0" />
       </p>
@@ -98,14 +95,15 @@
   </div>
 
   <footer>
-    Ontwikkeld door
+    <span local="DEVELOPED_BY"></span>
     <a href="http://www.accessibility.nl/" id="accessibility" target="_blank">Stichting Accessibility</a>
-    i.s.m.
+    <span local="IN_COOP_WITH"></span>
     <a href="http://www.q42.nl/" id="q42" target="_blank">Q42</a>
   </footer>
 
   <script src="jquery-1.8.0.min.js"></script>
   <script src="popup.js"></script>
+  <script src="local.js"></script>
 
 </body>
 </html>

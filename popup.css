@@ -45,6 +45,23 @@ a {
 	text-decoration: none;
 	color: #333;
 }
+#lang-select {
+  position: absolute;
+  right: 45px;
+  top: 13px;
+  font-size: 11px;
+  font-weight: bold;
+  text-align: right;
+}
+a.slang,span.sep {
+  color: #fff;
+}
+a.slang:hover,a.slang.selected {
+  text-decoration: underline
+}
+span.sep:first-child {
+  display: none;
+}
 a.info {
 	position:absolute;
 	right:10px;
