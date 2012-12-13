@@ -68,10 +68,9 @@ var localization = {
 
 function setLang(lang) {
   lang=lang.target?lang.target.getAttribute('lang'):lang;
-  var LANG = localization[lang];
-  if(!LANG) return;
-  $('a.slang').removeClass('selected').filter('[lang='+lang+']').addClass('selected');
+  var LANG = localization[lang] || localization['EN'];
   localStorage.setItem('language',lang);
+  $('a.slang').removeClass('selected').filter('[lang='+lang+']').addClass('selected');
   $('[local]').each(function($t){($t=$(this)).html(LANG[$t.attr('local')])});
 };
 
@@ -79,4 +78,4 @@ for(var x in localization) $('#lang-select')
   .append('<span class="sep"> | </span>')
   .append($('<a href="#" class="slang" lang="'+x+'">'+x.toLowerCase()+'</a>').click(setLang));
 
-setLang(localStorage.getItem('language')||'NL');
+setLang(localStorage.getItem('language')||navigator.language.substr(0,2).toUpperCase());
