@@ -28,9 +28,12 @@ h1 {
 h1#app-logo {
 	display: block;
 	line-height:42px;
-	background:#005581 url(images/ui/logo.png) 10px center no-repeat;
-	color: transparent;
+	background:#005581 url(images/ui/eye.png) 10px center no-repeat;
+	color: #fff;
+	font-size:24px;
+	font-family:Arial;
 	border-radius: 3px 3px 0 0;
+	padding:2px 0 0 48px;
 }
 h2 {
 	font-size:14px;
