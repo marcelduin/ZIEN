@@ -31,7 +31,8 @@ var localization = {
     ACHROMATOPSIA_INFO: 'Information about this condition can be found on <a href="http://en.wikipedia.org/wiki/Protanomaly#Total_color_blindness" target="_blank">WikiPedia</a>',
     
     DEVELOPED_BY: 'Developed by',
-    IN_COOP_WITH: 'and'
+    IN_COOP_WITH: 'and',
+    DURING: 'during'
   },
 
   // Dutch
@@ -62,7 +63,8 @@ var localization = {
     ACHROMATOPSIA_INFO: 'Informatie over deze aandoening op <a href="http://nl.wikipedia.org/wiki/Kleurenblindheid" target="_blank">WikiPedia</a>',
     
     DEVELOPED_BY: 'Ontwikkeld door',
-    IN_COOP_WITH: 'i.s.m.'
+    IN_COOP_WITH: 'i.s.m.',
+    DURING: 'tijdens'
   }
 };
 
