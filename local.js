@@ -10,29 +10,29 @@ var localization = {
 
     CONDITIONS_TITLE: 'Eye conditions',
     RETINITIS_PIGMENTOSA: 'Retinitis pigmentosa',
-    RETINITIS_PIGMENTOSA_INFO: 'Information about this condition can be found on <a href="http://en.wikipedia.org/wiki/Retinitis_pigmentosa" target="_blank">WikiPedia</a>',
+    RETINITIS_PIGMENTOSA_INFO: 'More information about this condition on <a href="http://en.wikipedia.org/wiki/Retinitis_pigmentosa" target="_blank">WikiPedia</a>',
     DIABETIC_RETINOPATHY: 'Diabetic retinopathy',
-    DIABETIC_RETINOPATHY_INFO: 'Information about this condition can be found on <a href="http://en.wikipedia.org/wiki/Diabetic_retinopathy" target="_blank">WikiPedia</a>',
+    DIABETIC_RETINOPATHY_INFO: 'More information about this condition on <a href="http://en.wikipedia.org/wiki/Diabetic_retinopathy" target="_blank">WikiPedia</a>',
     GLAUCOMA: 'Glaucoma',
-    GLAUCOMA_INFO: 'Information about this condition can be found on <a href="http://en.wikipedia.org/wiki/Glaucoma" target="_blank">WikiPedia</a>',
+    GLAUCOMA_INFO: 'More information about this condition on <a href="http://en.wikipedia.org/wiki/Glaucoma" target="_blank">WikiPedia</a>',
     MACULAR_DEGENERATION: 'Macular degeneration',
-    MACULAR_DEGENERATION_INFO: 'Information about this condition can be found on <a href="http://en.wikipedia.org/wiki/Macular_degeneration" target="_blank">WikiPedia</a>',
+    MACULAR_DEGENERATION_INFO: 'More information about this condition on <a href="http://en.wikipedia.org/wiki/Macular_degeneration" target="_blank">WikiPedia</a>',
     CATARACT: 'Cataract',
-    CATARACT_INFO: 'Information about this condition can be found on <a href="http://en.wikipedia.org/wiki/Cataract" target="_blank">WikiPedia</a>',
+    CATARACT_INFO: 'More information about this condition on <a href="http://en.wikipedia.org/wiki/Cataract" target="_blank">WikiPedia</a>',
 
     COLOR_BLINDNESS_TITLE: 'Colour blindness',
     PROTANOMALY: 'Protanomaly',
-    PROTANOMALY_INFO: 'Information about this condition can be found on <a href="http://en.wikipedia.org/wiki/Protanomaly#Anomalous_trichromacy" target="_blank">WikiPedia</a>',
+    PROTANOMALY_INFO: 'More information about this condition on <a href="http://en.wikipedia.org/wiki/Protanomaly#Anomalous_trichromacy" target="_blank">WikiPedia</a>',
     DEUTERANOMALY: 'Deuteranomaly',
-    DEUTERANOMALY_INFO: 'Information about this condition can be found on <a href="http://en.wikipedia.org/wiki/Protanomaly#Anomalous_trichromacy" target="_blank">WikiPedia</a>',
+    DEUTERANOMALY_INFO: 'More information about this condition on <a href="http://en.wikipedia.org/wiki/Protanomaly#Anomalous_trichromacy" target="_blank">WikiPedia</a>',
     TRITANOMALY: 'Tritanomaly',
-    TRITANOMALY_INFO: 'Information about this condition can be found on <a href="http://en.wikipedia.org/wiki/Protanomaly#Anomalous_trichromacy" target="_blank">WikiPedia</a>',
+    TRITANOMALY_INFO: 'More information about this condition on <a href="http://en.wikipedia.org/wiki/Protanomaly#Anomalous_trichromacy" target="_blank">WikiPedia</a>',
     ACHROMATOPSIA: 'Achromatopsy',
-    ACHROMATOPSIA_INFO: 'Information about this condition can be found on <a href="http://en.wikipedia.org/wiki/Protanomaly#Total_color_blindness" target="_blank">WikiPedia</a>',
+    ACHROMATOPSIA_INFO: 'More information about this condition on <a href="http://en.wikipedia.org/wiki/Protanomaly#Total_color_blindness" target="_blank">WikiPedia</a>',
     
-    DEVELOPED_BY: 'Developed by',
-    IN_COOP_WITH: 'and',
-    DURING: 'during'
+    THIS_IS_A: 'This is a',
+    DEVELOPED_BY: 'developed by',
+    IN_COOP_WITH: 'and'
   },
 
   // Dutch
@@ -62,9 +62,9 @@ var localization = {
     ACHROMATOPSIA: 'Achromatopsie',
     ACHROMATOPSIA_INFO: 'Informatie over deze aandoening op <a href="http://nl.wikipedia.org/wiki/Kleurenblindheid" target="_blank">WikiPedia</a>',
     
-    DEVELOPED_BY: 'Ontwikkeld door',
-    IN_COOP_WITH: 'i.s.m.',
-    DURING: 'tijdens'
+    THIS_IS_A: 'Dit is een',
+    DEVELOPED_BY: 'ontwikkeld door',
+    IN_COOP_WITH: 'i.s.m.'
   }
 };
 

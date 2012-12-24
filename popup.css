@@ -186,12 +186,13 @@ footer {
 	font-size: 10px;
 	color: #fff;
 	font-style: italic;
+	line-height: 35px;
 }
 footer a {
 	color: transparent;
 	display: inline-block;
 	vertical-align: middle;
-	height: 30px;
+	height: 35px;
 	margin: 0 5px;
 }
 footer a#accessibility {
@@ -205,8 +206,11 @@ footer a#q42 {
 	background: transparent url(images/ui/q42.png) center center no-repeat;
 }
 footer a#w00tcamp {
-  width: 30px;
-  height: 30px;
-  margin: 0 3px;
-  background: transparent url(images/ui/w00tcamp.png) center center no-repeat;
+  color: inherit;
+  line-height: 35px;
+  vertical-align: 0px;
+  margin: 0 0;
+}
+a#w00tcamp:hover {
+  text-decoration: underline;
 }

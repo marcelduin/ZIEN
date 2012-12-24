@@ -2,7 +2,7 @@
   "name": "SEE",
   "version": "1.0",
   "manifest_version": 2,
-  "description": "'Hoe is het om slechtziend te zijn?' Als goedziende mens kom je dat nooit helemaal te weten. Maar door te spelen met SEE kun je het je misschien iets beter voorstellen.",
+  "description": "\"What's it like being visually impaired?\" Playing with SEE might allow you to imagine that.",
   "icons": { "16": "icon16.png",
            "48": "icon48.png",
           "128": "icon128.png" },
