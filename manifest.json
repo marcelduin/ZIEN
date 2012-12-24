@@ -1,6 +1,6 @@
 {
   "name": "SEE",
-  "version": "1.0",
+  "version": "1.1",
   "manifest_version": 2,
   "description": "\"What's it like being visually impaired?\" Playing with SEE might allow you to imagine that.",
   "icons": { "16": "icon16.png",
