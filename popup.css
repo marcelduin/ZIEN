@@ -10,7 +10,7 @@ html {
 body {
 	margin: 0;padding: 0;
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-	background-color: #99b9d2;
+	background-color: #fff;
 	width:310px;
 	color:#fff200;
 }
@@ -28,7 +28,7 @@ h1 {
 h1#app-logo {
 	display: block;
 	line-height:42px;
-	background:#005581 url(images/ui/eye.png) 10px center no-repeat;
+	background:#529d03 url(images/ui/eye.png) 10px center no-repeat;
 	color: #fff;
 	font-size:24px;
 	font-family:Arial;
@@ -81,10 +81,10 @@ a.info {
 p.info-panel {
 	display:none;
 	-webkit-transition: all 0.3s ease-out;
-	border-bottom:1px solid #005581;;
+	border-bottom:1px solid #529d03;
 	margin:0;
 	color:#333;
-	background-color:#fff;
+	background-color:#ebfcd9;
 	padding:10px;
 	font-size:13px;
 }
@@ -106,9 +106,9 @@ a.info:focus + p.info-panel {
 .accordion-header {
 	padding:0;
 	margin:0;
-	background: #e9eff4;
+	background: #ebfcd9;//#e9eff4;
 	border-radius: 3px;
-	border: 1px solid #333;
+	border: 1px solid #529d03;
 	-webkit-transition: background .2s ease-in-out, border-radius .2s ease-in-out, border-bottom-color .2s ease-in-out;
 	background-position: right 50%;
 	background-repeat: no-repeat;
@@ -144,12 +144,16 @@ a.info:focus + p.info-panel {
 .accordion-header a:after {
 	content: "∧";
 	float:right;
-	color: #005581;
+	color: #529d03;
+	font-weight:bold;
+	line-height:14px;
 }
 .inactive-header a:after {
 	content:"∨";
 	float:right;
-	color: #005581;
+	color: #529d03;
+	font-weight:bold;
+	line-height:14px;
 }
 
 
@@ -157,7 +161,7 @@ a.info:focus + p.info-panel {
 	display: none;
 	width:100%;
 	background: #ffffff;
-	border: 1px solid #005581;
+	border: 1px solid #529d03;
 	border-top:none;
 	color:#222;
 	border-radius: 0 0 3px 3px;
@@ -180,19 +184,19 @@ a.info:focus + p.info-panel {
 /* footer */
 footer {
 	margin-top: 15px;
-	background-color: #005581;
+	background-color: #529d03;
 	border-radius: 0 0 3px 3px;
 	text-align: right;
 	font-size: 10px;
 	color: #fff;
 	font-style: italic;
-	line-height: 35px;
+	line-height: 36px;
 }
 footer a {
 	color: transparent;
 	display: inline-block;
 	vertical-align: middle;
-	height: 35px;
+	height: 36px;
 	margin: 0 5px;
 }
 footer a#accessibility {
@@ -201,8 +205,10 @@ footer a#accessibility {
 	background: transparent url(images/ui/accessibility.png) center center no-repeat;
 }
 footer a#q42 {
-	width: 20px;
-	height: 30px;
+	width: 26px;
+	height: 42px;
+	margin-right:5px;
+	margin-top:-12px;
 	background: transparent url(images/ui/q42.png) center center no-repeat;
 }
 footer a#w00tcamp {
