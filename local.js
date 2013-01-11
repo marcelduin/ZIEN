@@ -30,8 +30,7 @@ var localization = {
     ACHROMATOPSIA: 'Achromatopsy',
     ACHROMATOPSIA_INFO: 'More information about this condition on <a href="http://en.wikipedia.org/wiki/Protanomaly#Total_color_blindness" target="_blank">WikiPedia</a>',
     
-    THIS_IS_A: 'This is a',
-    DEVELOPED_BY: 'developed by',
+    DEVELOPED_BY: 'This extension was developed by',
     IN_COOP_WITH: 'and'
   },
 
@@ -62,8 +61,7 @@ var localization = {
     ACHROMATOPSIA: 'Achromatopsie',
     ACHROMATOPSIA_INFO: 'Informatie over deze aandoening op <a href="http://nl.wikipedia.org/wiki/Kleurenblindheid" target="_blank">WikiPedia</a>',
     
-    THIS_IS_A: 'Dit is een',
-    DEVELOPED_BY: 'ontwikkeld door',
+    DEVELOPED_BY: 'Deze extensie is ontwikkeld door',
     IN_COOP_WITH: 'i.s.m.'
   }
 };
