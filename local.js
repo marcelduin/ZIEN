@@ -30,7 +30,7 @@ var localization = {
     ACHROMATOPSIA: 'Achromatopsy',
     ACHROMATOPSIA_INFO: 'More information about this condition on <a href="http://en.wikipedia.org/wiki/Protanomaly#Total_color_blindness" target="_blank">WikiPedia</a>',
     
-    DEVELOPED_BY: 'This extension was developed by',
+    DEVELOPED_BY: 'Developed by',
     IN_COOP_WITH: 'and'
   },
 
@@ -61,21 +61,21 @@ var localization = {
     ACHROMATOPSIA: 'Achromatopsie',
     ACHROMATOPSIA_INFO: 'Informatie over deze aandoening op <a href="http://nl.wikipedia.org/wiki/Kleurenblindheid" target="_blank">WikiPedia</a>',
     
-    DEVELOPED_BY: 'Deze extensie is ontwikkeld door',
+    DEVELOPED_BY: 'Ontwikkeld door',
     IN_COOP_WITH: 'i.s.m.'
   }
 };
 
 function setLang(lang) {
   lang=lang.target?lang.target.getAttribute('lang'):lang;
-  var LANG = localization[lang] || localization['EN'];
-  localStorage.setItem('language',lang);
-  $('a.slang').removeClass('selected').filter('[lang='+lang+']').addClass('selected');
+  var LANG = localization[lang] || localization['NL'];
+  //localStorage.setItem('language',lang);
+  //$('a.slang').removeClass('selected').filter('[lang='+lang+']').addClass('selected');
   $('[local]').each(function($t){($t=$(this)).html(LANG[$t.attr('local')])});
 };
 
-for(var x in localization) $('#lang-select')
+/*for(var x in localization) $('#lang-select')
   .append('<span class="sep"> | </span>')
-  .append($('<a href="#" class="slang" lang="'+x+'">'+x.toLowerCase()+'</a>').click(setLang));
+  .append($('<a href="#" class="slang" lang="'+x+'">'+x.toLowerCase()+'</a>').click(setLang));*/
 
-setLang(localStorage.getItem('language')||navigator.language.substr(0,2).toUpperCase());
+setLang('NL');//localStorage.getItem('language')||navigator.language.substr(0,2).toUpperCase());
