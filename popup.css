@@ -5,6 +5,7 @@
 html {
 	border-radius: 3px;
 	-webkit-user-select: none;
+	-webkit-font-smoothing: antialiased;
 	cursor: default;
 }
 body {
@@ -60,8 +61,9 @@ a.slang:hover,a.slang.selected {
 span.sep:first-child {
   display: none;
 }
-a.info {
+.info {
 	position:absolute;
+	cursor: pointer;
 	right:10px;
 	top:12px;
 	display:block;
@@ -83,8 +85,8 @@ p.info-panel {
 	padding:10px;
 	font-size:13px;
 }
-a.info:hover + p.info-panel,
-a.info:focus + p.info-panel { 
+.info:hover + p.info-panel,
+.info:focus + p.info-panel { 
 	display:block;
 }
 
